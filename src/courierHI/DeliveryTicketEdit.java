@@ -19,6 +19,10 @@ public class DeliveryTicketEdit extends JPanel {
 		JLabel lblDeliveryTicket = new JLabel("Delivery Ticket");
 		lblDeliveryTicket.setBounds(173, 17, 99, 16);
 		add(lblDeliveryTicket);
+		
+		JLabel lblDate = new JLabel("Date :");
+		lblDate.setBounds(29, 54, 42, 16);
+		add(lblDate);
 
 	}
 }

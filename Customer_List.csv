@@ -11,9 +11,8 @@ CustomerList,1010,Susan Liddy-Gates,6,D,155-153-1751,
 User,1,Pavan,1234,405-392-3939,pavan@gmail.com,admin
 User,2,Soumya,1212,492-303-3042,soumya@gmail.com,user
 User,3,David,5050,002-028-9843,david@gmail.com,user
-Courier _List,Courier Number,Name,,,,
-Courier _List,1,Jack Sprat,,,,
-Courier _List,2,Peter Pumkin,,,,
-Courier _List,3,Jack Candle,,,,
-Courier _List,4,Mary Muffet,,,,
-Courier _List,5,Ken Cole,,,,
+Courier_List,1,Jack Sprat,
+Courier_List,2,Peter Pumkin,
+Courier_List,3,Jack Candle,
+Courier_List,4,Mary Muffet,
+Courier_List,5,Ken Cole,

@@ -42,17 +42,17 @@ public class DriverEditPanel extends JPanel {
 					courier.removeDriver(driver);
 					driver.setNumber(textField_1.getText());
 					courier.addDriver(driver);
-					if (isAdd)
-					{
-						driver.setNumber(textField_1.getText());
-						courier.addDriver(driver);
-					}
-					driver.setName(textField.getText());
-					
-					currentFrame.getContentPane().removeAll();
-					currentFrame.getContentPane().add(new DriverListPanel(currentFrame,courier));
-					currentFrame.getContentPane().revalidate();
 				}
+				if (isAdd)
+				{
+					driver.setNumber(textField_1.getText());
+					courier.addDriver(driver);
+				}
+				driver.setName(textField.getText());
+				
+				currentFrame.getContentPane().removeAll();
+				currentFrame.getContentPane().add(new DriverListPanel(currentFrame,courier));
+				currentFrame.getContentPane().revalidate();
 			}
 		});
 		btnSave.setBounds(90, 223, 117, 29);

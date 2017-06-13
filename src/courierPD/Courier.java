@@ -129,8 +129,17 @@ public class Courier {
 		{
 			userList.add(userEntry.getValue());
 		}
-//		System.out.println(userList);
 		return userList;
+	}
+	
+	public ArrayList getDriverList()
+	{
+		ArrayList driverList = new ArrayList();
+		for (Entry <String, Driver> driverEntry : getDriver().entrySet())
+		{
+			driverList.add(driverEntry.getValue());
+		}
+		return driverList;
 	}
 	
 	public void addCustomer(Customer customer)

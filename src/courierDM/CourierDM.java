@@ -75,7 +75,6 @@ public class CourierDM {
 			
 			while((line = bufferedReader1.readLine()) != null)
 			{
-				System.out.println(line);
 				String [] block = line.split(",");
 				switch (block[0])
 				{

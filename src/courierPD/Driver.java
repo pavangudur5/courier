@@ -20,7 +20,6 @@ public class Driver {
 	{
 		this.name = name;
 		this.number = number;
-		System.out.println(name);
 	}
 
 	public String getNumber() {
@@ -41,6 +40,6 @@ public class Driver {
 
 	@Override
 	public String toString() {
-		return getNumber() + getName();
+		return getNumber()+ "    " + getName();
 	}
 }

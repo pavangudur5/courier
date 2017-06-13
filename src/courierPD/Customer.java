@@ -10,8 +10,8 @@ public class Customer {
 	
 	public Customer()
 	{
-		this.number = "0";
-		this.name = "name";
+		this.number = " ";
+		this.name = " ";
 		this.avenue = "";
 		this.street = "";
 		this.Phno = " ";
@@ -24,7 +24,6 @@ public class Customer {
 		this.number = number;
 		this.street = street;
 		this.Phno = Phno;
-//		System.out.println(name);
 	}
 	
 	public String getNumber() {

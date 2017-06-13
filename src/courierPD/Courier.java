@@ -115,11 +115,22 @@ public class Courier {
 	public ArrayList getCustomerList()
 	{
 		ArrayList customerList = new ArrayList();
-		for (Entry <String, Customer> cashierEntry : getCustomer().entrySet())
+		for (Entry <String, Customer> customerEntry : getCustomer().entrySet())
 		{
-			customerList.add(cashierEntry.getValue());
+			customerList.add(customerEntry.getValue());
 		}
 		return customerList;
+	}
+	
+	public ArrayList getUserList()
+	{
+		ArrayList userList = new ArrayList();
+		for (Entry <String, User> userEntry : getUser().entrySet())
+		{
+			userList.add(userEntry.getValue());
+		}
+//		System.out.println(userList);
+		return userList;
 	}
 	
 	public void addCustomer(Customer customer)

@@ -21,6 +21,8 @@ public class DeliveryTicketList extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	JButton btnDelete;
+	JButton btnEdit;
 	public DeliveryTicketList(JFrame currentFrame, Courier courier) {
 		setLayout(null);
 		
@@ -32,9 +34,9 @@ public class DeliveryTicketList extends JPanel {
 		list.setBounds(51, 60, 345, 155);
 		add(list);
 		
-//		DefaultListModel listModel = new DefaultListModel();
-//		for (Entry<String, DeliveryTicket> customerEntry : courier.getDeliveryTicket().entrySet())
-//			listModel.addElement(DeliveryTicketEntry.getValue());
+		DefaultListModel listModel = new DefaultListModel();
+		for (Entry<String, DeliveryTicket> DeliveryTicketEntry : courier.getDeliveryTicket().entrySet())
+			listModel.addElement(DeliveryTicketEntry.getValue());
 //		Complete this.
 		
 		JButton btnCreate = new JButton("Create");
@@ -49,7 +51,7 @@ public class DeliveryTicketList extends JPanel {
 		btnCreate.setBounds(42, 245, 117, 29);
 		add(btnCreate);
 		
-		JButton btnEdit = new JButton("Edit");
+		btnEdit = new JButton("Edit");
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DeliveryTicketEdit deliveryTicketEdit = new DeliveryTicketEdit(currentFrame, courier, (DeliveryTicket)list.getSelectedValue(), false);
@@ -59,17 +61,19 @@ public class DeliveryTicketList extends JPanel {
 			}
 		});
 		btnEdit.setBounds(171, 245, 117, 29);
+		btnEdit.setEnabled(false);
 		add(btnEdit);
 		
-		JButton btnDelete = new JButton("Delete");
+		btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				courier.removeDeliveryTicket((DeliveryTicket)list.getSelectedValue());
-//				listModel.removeElement(list.getSelectedValue());
+				courier.removeDileveryTicket((DeliveryTicket)list.getSelectedValue());
+				listModel.removeElement(list.getSelectedValue());
 //				Add this after adding the delivery ticket.
 			}
 		});
 		btnDelete.setBounds(300, 245, 117, 29);
+		btnDelete.setEnabled(false);
 		add(btnDelete);
 		
 		

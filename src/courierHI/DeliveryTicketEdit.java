@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import courierPD.Courier;
 import courierPD.DeliveryTicket;
+import courierPD.Driver;
 import courierPD.User;
 
 import javax.swing.JFrame;
@@ -16,6 +17,10 @@ import java.util.Random;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class DeliveryTicketEdit extends JPanel {
 	private LocalDateTime Date = LocalDateTime.now();
@@ -216,24 +221,100 @@ public class DeliveryTicketEdit extends JPanel {
 		textFieldActPickUp.setColumns(10);
 		
 		textFieldActDel = new JTextField();
+		textFieldActDel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				calculatebonus();
+			}
+
+			private void calculatebonus() {
+				String esttime = deliveryticket.getEstDeliveryTime();
+				String acttime = textFieldActDel.getText();
+						
+				if (esttime.equals(acttime))
+				{
+					deliveryticket.setBonus("2");
+					textFieldBonus.setText("2");
+				}
+				else 
+				{
+					deliveryticket.setBonus("0");
+					textFieldBonus.setText("0");
+				}
+				
+			}
+		});
 		textFieldActDel.setBounds(451, 328, 130, 26);
 		add(textFieldActDel);
 		textFieldActDel.setColumns(10);
-		
 		textFieldBonus = new JTextField();
 		textFieldBonus.setBounds(451, 356, 130, 26);
 		add(textFieldBonus);
 		textFieldBonus.setColumns(10);
 		
 		JButton btnSave = new JButton("Save");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!isAdd && !deliveryticket.getPackageId().equals(n));
+				{
+					courier.removeDileveryTicket(deliveryticket);
+					deliveryticket.setPackageId(nn);
+					courier.addDileveryTicket(deliveryticket);
+				}
+				if (isAdd)
+				{
+					deliveryticket.setPackageId(nn);
+					courier.addDileveryTicket(deliveryticket);
+				}
+				
+				deliveryticket.setActDeliveryTime(textFieldActDel.getText());
+				deliveryticket.setActPickUpTime(textFieldPickUpTime.getText());
+				deliveryticket.setAssignedTime(textFieldAssTime.getText());
+				deliveryticket.setBillToDeliveryUp(textFieldBillDelivery.getText());
+				deliveryticket.setBillToPickUp(textFieldPickUpTime.getText());
+				deliveryticket.setBonus(textFieldBonus.getText());
+				deliveryticket.setCustomerNamed(textField.getText());
+				deliveryticket.setCustomerNamep(textFieldCusName.getText());
+//				deliveryticket.setDate();
+//				deliveryticket.getDeliveryCustomerNumber();
+//				deliveryticket.getDriverNumber(.getText());
+				User userp = (User) comboBox.getSelectedItem();
+				User userd = (User) comboBox_1.getSelectedItem();
+				Driver driver = (Driver) ComboDriverNum.getSelectedItem();
+				deliveryticket.setEstBlocks(textFieldEstBlocks.getText());
+				deliveryticket.setEstDeliveryTime(textFieldestdeltime.getText());
+				deliveryticket.setQuotedPrice(textFieldQuotedPrice.getText());
+				
+				currentFrame.getContentPane().removeAll();
+				currentFrame.getContentPane().add(new DeliveryTicketList(currentFrame,courier));
+				currentFrame.getContentPane().revalidate();
+			}
+		});
 		btnSave.setBounds(154, 402, 117, 29);
 		add(btnSave);
 		
+		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				currentFrame.getContentPane().removeAll();
+				currentFrame.getContentPane().add(new DeliveryTicketList(currentFrame,courier));
+				currentFrame.getContentPane().revalidate();
+			}
+		});
 		btnCancel.setBounds(319, 402, 117, 29);
 		add(btnCancel);
 		
-		
+		JButton btnGenerateDriverCopy = new JButton("Generate Driver Copy");
+		btnGenerateDriverCopy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				currentFrame.getContentPane().removeAll();
+				currentFrame.getContentPane().add(new GenerateDriverCopy(currentFrame,courier,deliveryticket));
+				currentFrame.getContentPane().revalidate();
+			}
+		});
+		btnGenerateDriverCopy.setBounds(366, 208, 171, 29);
+		add(btnGenerateDriverCopy);
 
 	}
 }

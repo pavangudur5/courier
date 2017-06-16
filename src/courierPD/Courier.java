@@ -20,6 +20,8 @@ public class Courier {
 	private TreeMap<String, User> user;
 	private TreeMap<String, Driver> driver;
 	private String usernumber;
+	private TreeMap<String, DeliveryTicket> deliveryTicket;
+	private TreeMap<String, ConstZone> constzone;
 	
 	
 	public Courier()
@@ -33,6 +35,8 @@ public class Courier {
 		customer = new TreeMap <String, Customer>();
 		driver = new TreeMap <String, Driver>();
 		user = new TreeMap <String, User>();
+		deliveryTicket = new TreeMap <String, DeliveryTicket>();
+		constzone = new TreeMap <String, ConstZone>();
 	}
 
 	public String getname(){
@@ -112,6 +116,24 @@ public class Courier {
 		this.bonusAmount = bonusAmount;
 	}
 
+	public TreeMap<String, DeliveryTicket> getDeliveryTicket() 
+	{
+		return this.deliveryTicket;
+	}
+
+	public void setDeliveryTicket(TreeMap<String, DeliveryTicket> deliveryTicket)
+	{
+		this.deliveryTicket = deliveryTicket;
+	}
+
+	public TreeMap<String, ConstZone> getConstzone() {
+		return this.constzone;
+	}
+
+	public void setConstzone(TreeMap<String, ConstZone> constzone) {
+		this.constzone = constzone;
+	}
+
 	public ArrayList getCustomerList()
 	{
 		ArrayList customerList = new ArrayList();
@@ -140,6 +162,16 @@ public class Courier {
 			driverList.add(driverEntry.getValue());
 		}
 		return driverList;
+	}
+	
+	public ArrayList getDeliveryTicketList()
+	{
+		ArrayList deliveryTicketList = new ArrayList();
+		for (Entry <String, DeliveryTicket> deliveryTicketEntry : getDeliveryTicket().entrySet())
+		{
+			deliveryTicketList.add(deliveryTicketEntry.getValue());
+		}
+		return deliveryTicketList;
 	}
 	
 	public void addCustomer(Customer customer)
@@ -188,6 +220,38 @@ public class Courier {
 		if (driver != null)
 		{
 			getDriver().remove(driver.getNumber());
+		}
+	}
+	
+	public void addDileveryTicket(DeliveryTicket deliveryTicket)
+	{
+		if (deliveryTicket != null)
+		{
+			getDeliveryTicket().put(deliveryTicket.getPackageId(), deliveryTicket);
+		}
+	}
+	
+	public void removeDileveryTicket(DeliveryTicket deliveryTicket)
+	{
+		if (deliveryTicket != null)
+		{
+			getDeliveryTicket().remove(deliveryTicket.getPackageId());
+		}
+	}
+	
+	public void addConstZone(ConstZone constZone)
+	{
+		if (constZone != null)
+		{
+			getConstzone().put(constZone.getConstructionNo(), constZone);
+		}
+	}
+	
+	public void removeConstZone(ConstZone constZone)
+	{
+		if (constZone != null)
+		{
+			getConstzone().remove(constZone.getConstructionNo());
 		}
 	}
 	

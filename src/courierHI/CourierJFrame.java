@@ -41,13 +41,14 @@ public class CourierJFrame extends JFrame {
 	 */
 	public CourierJFrame(final Courier courier) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 400);
+		setBounds(100, 100, 650, 500);
 		currentFrame = this;
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
 		JMenu mnMain = new JMenu("Maintenance");
+//		mnMain.setEnabled(false);
 		menuBar.add(mnMain);
 		
 		JMenuItem mntmCustomer = new JMenuItem("Customer");
@@ -81,6 +82,13 @@ public class CourierJFrame extends JFrame {
 		mnMain.add(mntmUser);
 		
 		JMenuItem mntmConstZone = new JMenuItem("Const. Zone");
+		mntmConstZone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				getContentPane().removeAll();
+				getContentPane().add(new ConstZoneListPanel(currentFrame,courier));
+				getContentPane().revalidate();
+			}
+		});
 		mnMain.add(mntmConstZone);
 		
 		JMenuItem mntmMapInfo = new JMenuItem("Map Info");
@@ -89,9 +97,9 @@ public class CourierJFrame extends JFrame {
 		JMenuItem mntmCompanyInfo = new JMenuItem("Company Info");
 		mntmCompanyInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentFrame.getContentPane().removeAll();
-				currentFrame.getContentPane().add(new CompanyinfoEditPanel(currentFrame, courier));
-				currentFrame.getContentPane().revalidate();
+				getContentPane().removeAll();
+				getContentPane().add(new CompanyinfoEditPanel(currentFrame, courier));
+				getContentPane().revalidate();
 			}
 		});
 		mnMain.add(mntmCompanyInfo);
@@ -99,9 +107,9 @@ public class CourierJFrame extends JFrame {
 		JMenuItem mntmDeliveryTicket = new JMenuItem("Delivery Ticket");
 		mntmDeliveryTicket.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentFrame.getContentPane().removeAll();
-				currentFrame.getContentPane().add(new DeliveryTicketList(currentFrame, courier));
-				currentFrame.getContentPane().revalidate();
+				getContentPane().removeAll();
+				getContentPane().add(new DeliveryTicketList(currentFrame, courier));
+				getContentPane().revalidate();
 			}
 		});
 		mnMain.add(mntmDeliveryTicket);
@@ -110,9 +118,23 @@ public class CourierJFrame extends JFrame {
 		menuBar.add(mnReports);
 		
 		JMenuItem mntmWeeklyBillReport = new JMenuItem("Weekly Bill");
+		mntmWeeklyBillReport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				getContentPane().removeAll();
+				getContentPane().add(new WeeklyBillReport(currentFrame, courier));
+				getContentPane().revalidate();
+			}
+		});
 		mnReports.add(mntmWeeklyBillReport);
 		
 		JMenuItem mntmDeliveryBonusReport = new JMenuItem("Delivery Bonus");
+		mntmDeliveryBonusReport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				getContentPane().removeAll();
+				getContentPane().add(new DriverBonusReport(currentFrame, courier));
+				getContentPane().revalidate();
+			}
+		});
 		mnReports.add(mntmDeliveryBonusReport);
 		
 		JMenuItem mntmCustomerPerformanceReport = new JMenuItem("Customer Performance");

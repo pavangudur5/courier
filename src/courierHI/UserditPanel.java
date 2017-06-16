@@ -10,11 +10,12 @@ import courierPD.Courier;
 import courierPD.User;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class UserditPanel extends JPanel {
 	private JTextField textFieldName;
 	private JTextField textFieldNumber;
-	private JTextField textFieldPass;
+	private JPasswordField textFieldPass;
 	private JTextField textFieldPhno;
 	private JTextField textFieldEmail;
 	private JTextField textFieldRole;
@@ -104,7 +105,7 @@ public class UserditPanel extends JPanel {
 		add(textFieldNumber);
 		textFieldNumber.setColumns(10);
 		
-		textFieldPass = new JTextField(user.getPassword());
+		textFieldPass = new JPasswordField(user.getPassword());
 		textFieldPass.setBounds(158, 115, 130, 26);
 		add(textFieldPass);
 		textFieldPass.setColumns(10);

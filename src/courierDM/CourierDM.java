@@ -22,6 +22,8 @@ public class CourierDM {
 		FileReader fileReader = new FileReader(fileName);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		
+		
+		
 		while((line = bufferedReader.readLine()) != null)
 		{
 			String [] result = line.split(",");

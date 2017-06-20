@@ -59,7 +59,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return getNumber() + " " +getName();
+		return getName();
 	}
 
 	

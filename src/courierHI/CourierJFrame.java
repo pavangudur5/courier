@@ -92,6 +92,13 @@ public class CourierJFrame extends JFrame {
 		mnMain.add(mntmConstZone);
 		
 		JMenuItem mntmMapInfo = new JMenuItem("Map Info");
+		mntmMapInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				getContentPane().removeAll();
+				getContentPane().add(new MapInfoSelectionPanel(currentFrame,courier));
+				getContentPane().revalidate();
+			}
+		});
 		mnMain.add(mntmMapInfo);
 		
 		JMenuItem mntmCompanyInfo = new JMenuItem("Company Info");

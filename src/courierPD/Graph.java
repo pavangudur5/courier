@@ -27,7 +27,4 @@ public class Graph {
 	public void setEdges(List<StreetSegment> streetSegments) {
 		this.streetSegments = streetSegments;
 	}
-	
-	
-
 }

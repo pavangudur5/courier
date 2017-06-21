@@ -40,7 +40,7 @@ public class ConstZoneListPanel extends JPanel {
 		scrollPane.setBounds(41, 56, 365, 168);
 		add(scrollPane);
 		
-		JList list = new JList();
+		JList list = new JList(listModel);
 		list.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				if(list.getSelectedValue() != null)

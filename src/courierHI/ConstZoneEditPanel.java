@@ -89,6 +89,8 @@ public class ConstZoneEditPanel extends JPanel {
 				currentFrame.getContentPane().removeAll();
 				currentFrame.getContentPane().add(new ConstZoneListPanel(currentFrame,courier));
 				currentFrame.getContentPane().revalidate();
+				
+				 
 			}
 		});
 		btnSave.setBounds(86, 241, 117, 29);

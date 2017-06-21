@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import courierPD.Courier;
 import courierPD.Customer;
 import courierPD.DeliveryTicket;
+import courierPD.Driver;
 
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -15,6 +16,8 @@ import javax.swing.JFrame;
 import java.awt.event.ActionListener;
 import java.util.Map.Entry;
 import java.awt.event.ActionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class DeliveryTicketList extends JPanel {
 
@@ -30,14 +33,23 @@ public class DeliveryTicketList extends JPanel {
 		lblDeliveryTicketsList.setBounds(148, 21, 140, 16);
 		add(lblDeliveryTicketsList);
 		
-		JList list = new JList();
-		list.setBounds(51, 60, 345, 155);
-		add(list);
-		
 		DefaultListModel listModel = new DefaultListModel();
 		for (Entry<String, DeliveryTicket> DeliveryTicketEntry : courier.getDeliveryTicket().entrySet())
 			listModel.addElement(DeliveryTicketEntry.getValue());
-//		Complete this.
+		
+		JList list = new JList(listModel);
+		list.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				if(list.getSelectedValue() !=null)
+				{
+					btnEdit.setEnabled(true);
+					btnDelete.setEnabled(true);
+				}
+				DeliveryTicket dt = (DeliveryTicket)list.getSelectedValue();
+			}
+		});
+		list.setBounds(51, 60, 345, 155);
+		add(list);
 		
 		JButton btnCreate = new JButton("Create");
 		btnCreate.addActionListener(new ActionListener() {
@@ -69,7 +81,6 @@ public class DeliveryTicketList extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				courier.removeDileveryTicket((DeliveryTicket)list.getSelectedValue());
 				listModel.removeElement(list.getSelectedValue());
-//				Add this after adding the delivery ticket.
 			}
 		});
 		btnDelete.setBounds(300, 245, 117, 29);

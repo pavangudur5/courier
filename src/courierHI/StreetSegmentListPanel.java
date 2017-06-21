@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class StreetSegmentListPanel extends JPanel {
 
@@ -29,6 +31,11 @@ public class StreetSegmentListPanel extends JPanel {
 		scrollPane.setViewportView(list);
 		
 		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnAdd.setBounds(36, 242, 117, 29);
 		add(btnAdd);
 		

@@ -46,6 +46,32 @@ public class DeliveryTicket {
 		this.Bonus = "";
 	}
 
+	public DeliveryTicket(LocalDateTime date, LocalDateTime time, String ordertaken, String pickupCustomer,
+			String customerNamep, String pickUpTime, String billToPickUp, String deliveryCustomerNumber,
+			String customerNamed, String billToDeliveryUp, String packageId, String estDeliveryTime, String estBlocks,
+			String quotedPrice, String driverNumber, String assignedTime, String actPickUpTime, String actDeliveryTime,
+			String bonus) {
+		this.date = date;
+		this.time = time;
+		this.ordertaken = ordertaken;
+		this.PickupCustomer = pickupCustomer;
+		this.CustomerNamep = customerNamep;
+		this.pickUpTime = pickUpTime;
+		this.BillToPickUp = billToPickUp;
+		this.DeliveryCustomerNumber = deliveryCustomerNumber;
+		this.CustomerNamed = customerNamed;
+		this.BillToDeliveryUp = billToDeliveryUp;
+		this.PackageId = packageId;
+		this.EstDeliveryTime = estDeliveryTime;
+		this.EstBlocks = estBlocks;
+		this.QuotedPrice = quotedPrice;
+		this.DriverNumber = driverNumber;
+		this.AssignedTime = assignedTime;
+		this.	ActPickUpTime = actPickUpTime;
+		this.ActDeliveryTime = actDeliveryTime;
+		this.Bonus = bonus;
+	}
+
 	public LocalDateTime getDate() {
 		return this.date;
 	}
@@ -126,11 +152,11 @@ public class DeliveryTicket {
 		this.BillToDeliveryUp = billToDeliveryUp;
 	}
 
-	public String getPackageId() {
+	public String getNumber() {
 		return this.PackageId;
 	}
 
-	public void setPackageId(String packageId) {
+	public void setNumber(String packageId) {
 		this.PackageId = packageId;
 	}
 
@@ -200,7 +226,7 @@ public class DeliveryTicket {
 
 	@Override
 	public String toString() {
-		return  "Order no:"+ getPackageId()+ "by" +getOrdertaken();
+		return  "Order no:"+ getNumber()+ "by" +getOrdertaken() + " " + getBonus();
 	}
 	
 	

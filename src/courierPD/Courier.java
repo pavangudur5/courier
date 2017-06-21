@@ -227,7 +227,7 @@ public class Courier {
 	{
 		if (deliveryTicket != null)
 		{
-			getDeliveryTicket().put(deliveryTicket.getPackageId(), deliveryTicket);
+			getDeliveryTicket().put(deliveryTicket.getNumber(), deliveryTicket);
 		}
 	}
 	
@@ -235,7 +235,7 @@ public class Courier {
 	{
 		if (deliveryTicket != null)
 		{
-			getDeliveryTicket().remove(deliveryTicket.getPackageId());
+			getDeliveryTicket().remove(deliveryTicket.getNumber());
 		}
 	}
 	

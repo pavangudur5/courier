@@ -43,6 +43,7 @@ public class DeliveryTicketEdit extends JPanel {
 	private JTextField textFieldActPickUp;
 	private JTextField textFieldActDel;
 	private JTextField textFieldBonus;
+	private JTextField textFieldPackageID;
 
 	/**
 	 * Create the panel.
@@ -137,11 +138,7 @@ public class DeliveryTicketEdit extends JPanel {
 		add(textFieldBillPickUp);
 		textFieldBillPickUp.setColumns(10);
 		
-		JLabel lblPackageID = new JLabel(nn);
-		lblPackageID.setBounds(141, 277, 127, 16);
-		add(lblPackageID);
-		
-		textFieldestdeltime = new JTextField();
+		textFieldestdeltime = new JTextField(deliveryticket.getEstDeliveryTime());
 		textFieldestdeltime.setBounds(138, 300, 130, 26);
 		add(textFieldestdeltime);
 		textFieldestdeltime.setColumns(10);
@@ -220,7 +217,7 @@ public class DeliveryTicketEdit extends JPanel {
 		add(textFieldActPickUp);
 		textFieldActPickUp.setColumns(10);
 		
-		textFieldActDel = new JTextField();
+		textFieldActDel = new JTextField(deliveryticket.getActDeliveryTime());
 		textFieldActDel.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -236,7 +233,7 @@ public class DeliveryTicketEdit extends JPanel {
 					deliveryticket.setBonus("2");
 					textFieldBonus.setText("2");
 				}
-				else 
+				else //complete this
 				{
 					deliveryticket.setBonus("0");
 					textFieldBonus.setText("0");
@@ -255,39 +252,27 @@ public class DeliveryTicketEdit extends JPanel {
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!isAdd && !deliveryticket.getPackageId().equals(n));
+				if (!isAdd && !deliveryticket.getNumber().equals(n));
 				{
 					courier.removeDileveryTicket(deliveryticket);
-					deliveryticket.setPackageId(nn);
+					deliveryticket.setNumber(textFieldPackageID.getText());
 					courier.addDileveryTicket(deliveryticket);
 				}
 				if (isAdd)
 				{
-					deliveryticket.setPackageId(nn);
+					
 					courier.addDileveryTicket(deliveryticket);
+					deliveryticket.setNumber(textFieldPackageID.getText());
 				}
 				
-				deliveryticket.setActDeliveryTime(textFieldActDel.getText());
-				deliveryticket.setActPickUpTime(textFieldPickUpTime.getText());
-				deliveryticket.setAssignedTime(textFieldAssTime.getText());
-				deliveryticket.setBillToDeliveryUp(textFieldBillDelivery.getText());
-				deliveryticket.setBillToPickUp(textFieldPickUpTime.getText());
-				deliveryticket.setBonus(textFieldBonus.getText());
-				deliveryticket.setCustomerNamed(textField.getText());
-				deliveryticket.setCustomerNamep(textFieldCusName.getText());
-//				deliveryticket.setDate();
-//				deliveryticket.getDeliveryCustomerNumber();
-//				deliveryticket.getDriverNumber(.getText());
-				User userp = (User) comboBox.getSelectedItem();
-				User userd = (User) comboBox_1.getSelectedItem();
-				Driver driver = (Driver) ComboDriverNum.getSelectedItem();
-				deliveryticket.setEstBlocks(textFieldEstBlocks.getText());
-				deliveryticket.setEstDeliveryTime(textFieldestdeltime.getText());
-				deliveryticket.setQuotedPrice(textFieldQuotedPrice.getText());
-				
+				System.out.println(deliveryticket.getNumber());
 				currentFrame.getContentPane().removeAll();
 				currentFrame.getContentPane().add(new DeliveryTicketList(currentFrame,courier));
 				currentFrame.getContentPane().revalidate();
+				
+				deliveryticket.setBonus(textFieldBonus.getText());
+				deliveryticket.setActDeliveryTime(textFieldActDel.getText());
+				deliveryticket.setEstDeliveryTime(textFieldestdeltime.getText());
 			}
 		});
 		btnSave.setBounds(154, 402, 117, 29);
@@ -315,6 +300,15 @@ public class DeliveryTicketEdit extends JPanel {
 		});
 		btnGenerateDriverCopy.setBounds(366, 208, 171, 29);
 		add(btnGenerateDriverCopy);
+		
+		textFieldPackageID = new JTextField(deliveryticket.getNumber());
+		textFieldPackageID.setBounds(138, 249, 130, 26);
+		add(textFieldPackageID);
+		textFieldPackageID.setColumns(10);
+		
+		JLabel labelpacid = new JLabel(nn);
+		labelpacid.setBounds(138, 277, 61, 16);
+		add(labelpacid);
 
 	}
 }

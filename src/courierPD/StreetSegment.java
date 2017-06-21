@@ -23,7 +23,6 @@ public class StreetSegment  {
 		this.destination = destination;
 		this.weight = weight;
 		this.name = name;
-		
 	}
 
 	public String getId() {
@@ -68,7 +67,7 @@ public class StreetSegment  {
 
 	@Override
 	public String toString() {
-		return   getName() + " " + getSource() + " " +  getDestination();
+		return   getName() + " " + getSource() + " " +  getDestination() + " " + getWeight();
 	}
 	
 	

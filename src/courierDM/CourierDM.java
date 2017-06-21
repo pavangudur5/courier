@@ -11,6 +11,8 @@ import courierPD.Courier;
 import courierPD.Customer;
 import courierPD.DeliveryTicket;
 import courierPD.Driver;
+import courierPD.Graph;
+import courierPD.Intersection;
 import courierPD.StreetSegment;
 import courierPD.User;
 
@@ -69,28 +71,6 @@ public class CourierDM {
 		}
 	}
 	
-//	public static void LoadMapInfo(Courier mycourier) throws Excetpion
-//	{
-//		String filename = "streets.csv";
-//		String line = null;
-//		
-//		try 
-//		{
-//			FileReader filereader = new FileReader(filename);
-//			BufferedReader burrferreader = new BufferedReader(filereader);
-//			
-//			while((line = burrferreader.readLine()) != null)
-//			{
-//				String [] result = line.split(",");
-//				switch (result[0])
-//				{
-//				case "road":
-//					StreetSegment ss = new StreetSegment(result[1], result[2], result[3], result[4]);
-//					
-//				}
-//			}
-//		}
-//	}
 	public static void LoadCustomerInfo(Courier mycourier) throws Exception
 	{
 		String fileName1 = "Customer_List.csv";
@@ -118,8 +98,6 @@ public class CourierDM {
 					LocalDateTime Date = LocalDateTime.now();
 					Driver driver = new Driver(block[1],block[2]);
 					mycourier.addDriver(driver);
-//					DeliveryTicket dt = new DeliveryTicket(Date,Date,block[0],block[0],block[0],block[0],block[0],block[0],block[0],block[0],block[0],block[0],block[0],block[0],block[0],block[0],block[0],block[0],block[0]);
-//					mycourier.addDileveryTicket(dt);
 					break;
 				default:
 					System.out.println("Error in reading cutomer file");

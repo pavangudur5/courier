@@ -33,3 +33,8 @@ public class GenerateDriverCopy extends JPanel {
 	}
 
 }
+
+
+// code for running the algorithm
+//DijAlgo.execute(nodes.get(0));
+//LinkedList<Intersection> path = DijAlgo.getPath(nodes.get(10));

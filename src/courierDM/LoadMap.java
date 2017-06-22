@@ -46,7 +46,6 @@ public class LoadMap {
 				int y = Integer.parseInt(block[3]);
 				int z = Integer.parseInt(block[4]);
 				addLane(block[1],x,y,z);
-				
 				break;
 				default:
 					System.out.println("something is rong in loading map info");
@@ -71,7 +70,6 @@ public class LoadMap {
 	private void addLane(String id, int source, int destination, int weight) {
 		StreetSegment lane = new StreetSegment(id, nodes.get(source), nodes.get(destination), weight);
 		edges.add(lane);
-		System.out.println(lane.toString());
 		
 	}
 }

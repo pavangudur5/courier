@@ -1,21 +1,24 @@
 package courierPD;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class ConstZone {
 	
 	private String ConstructionNo;
 	private String avenue;
 	private String streetNo;
-	private LocalDateTime startDateTime;
-	private LocalDateTime endDateTime;
+	private LocalDate startDate;
+	private LocalDate endDate;
+	
+	private DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
 	public ConstZone() {
 		ConstructionNo = " ";
 		avenue = " ";
 		streetNo = " ";
-		startDateTime = LocalDateTime.now();
-		endDateTime = LocalDateTime.now();
+		startDate = LocalDate.now();
+		endDate = LocalDate.now();
 	}
 
 	public ConstZone(String constructionNo, String avenue, String streetNo) {
@@ -48,25 +51,25 @@ public class ConstZone {
 		this.streetNo = streetNo;
 	}
 
-	public LocalDateTime getStartDateTime() {
-		return this.startDateTime;
+	public LocalDate getStartDate() {
+		return this.startDate;
 	}
 
-	public void setStartDateTime(LocalDateTime startDateTime) {
-		this.startDateTime = startDateTime;
+	public void setStartDate(LocalDate startDate) {
+		this.startDate = startDate;
 	}
 
-	public LocalDateTime getEndDateTime() {
-		return this.endDateTime;
+	public LocalDate getEndDate() {
+		return this.endDate;
 	}
 
-	public void setEndDateTime(LocalDateTime endDateTime) {
-		this.endDateTime = endDateTime;
+	public void setEndDate(LocalDate endDate) {
+		this.endDate = endDate;
 	}
 
 	@Override
 	public String toString() {
-		return getConstructionNo() + " " + getAvenue() + " " + getStreetNo();
+		return getConstructionNo() + " from " + getStartDate() + " till "+ getEndDate();
 	}
 	
 	

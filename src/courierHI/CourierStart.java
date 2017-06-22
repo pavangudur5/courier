@@ -11,12 +11,11 @@ public class CourierStart {
 		// TODO Auto-generated method stub
 
 		Courier courier = new Courier();
-		LoadMap loadmap = new LoadMap();
 		try
 		{
 			courierDM.CourierDM.LoadCompanyInfo(courier);
 			courierDM.CourierDM.LoadCustomerInfo(courier);
-			loadmap.loadMapinfo(courier);
+			courierDM.CourierDM.loadMapinfo(courier);
 			
 		}
 		catch (Exception e) {

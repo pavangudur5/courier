@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.lang.*;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
@@ -21,6 +22,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class DeliveryTicketEdit extends JPanel {
 	private LocalDateTime Date = LocalDateTime.now();
@@ -123,7 +126,7 @@ public class DeliveryTicketEdit extends JPanel {
 		comboBox.setBounds(138, 111, 130, 27);
 		add(comboBox);
 		
-		textFieldCusName = new JTextField();
+		textFieldCusName = new JTextField(deliveryticket.getCustomerNamep());
 		textFieldCusName.setBounds(138, 138, 130, 26);
 		add(textFieldCusName);
 		textFieldCusName.setColumns(10);
@@ -217,7 +220,7 @@ public class DeliveryTicketEdit extends JPanel {
 		add(textFieldActPickUp);
 		textFieldActPickUp.setColumns(10);
 		
-		textFieldActDel = new JTextField(deliveryticket.getActDeliveryTime());
+		textFieldActDel = new JTextField();
 		textFieldActDel.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -227,9 +230,9 @@ public class DeliveryTicketEdit extends JPanel {
 			private void calculatebonus() {
 				String esttime = deliveryticket.getEstDeliveryTime();
 				String acttime = textFieldActDel.getText();
-						
-				if (esttime.equals(acttime))
-				{
+						System.out.println(esttime + acttime);
+				if (esttime.equalsIgnoreCase(acttime))
+				{ 
 					deliveryticket.setBonus("2");
 					textFieldBonus.setText("2");
 				}
@@ -271,8 +274,11 @@ public class DeliveryTicketEdit extends JPanel {
 				currentFrame.getContentPane().revalidate();
 				
 				deliveryticket.setBonus(textFieldBonus.getText());
-				deliveryticket.setActDeliveryTime(textFieldActDel.getText());
-				deliveryticket.setEstDeliveryTime(textFieldestdeltime.getText());
+				LocalTime ef,df;
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:MM");
+				ef = LocalTime.parse(textFieldActDel.getText(), formatter);
+				df = LocalTime.parse(textFieldPickUpTime.getText(), formatter);
+				deliveryticket.setActDeliveryTime(ef);
 			}
 		});
 		btnSave.setBounds(154, 402, 117, 29);

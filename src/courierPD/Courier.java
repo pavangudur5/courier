@@ -22,6 +22,7 @@ public class Courier {
 	private String usernumber;
 	private TreeMap<String, DeliveryTicket> deliveryTicket;
 	private TreeMap<String, ConstZone> constzone;
+	private TreeMap<String, StreetSegment> sg;
 	
 	
 	public Courier()
@@ -37,6 +38,7 @@ public class Courier {
 		user = new TreeMap <String, User>();
 		deliveryTicket = new TreeMap <String, DeliveryTicket>();
 		constzone = new TreeMap <String, ConstZone>();
+		sg = new TreeMap <String, StreetSegment>();
 	}
 
 	public String getname(){
@@ -134,6 +136,14 @@ public class Courier {
 		this.constzone = constzone;
 	}
 
+	public TreeMap<String, StreetSegment> getSg() {
+		return this.sg;
+	}
+
+	public void setSg(TreeMap<String, StreetSegment> sg) {
+		this.sg = sg;
+	}
+
 	public ArrayList getCustomerList()
 	{
 		ArrayList customerList = new ArrayList();
@@ -162,6 +172,16 @@ public class Courier {
 			driverList.add(driverEntry.getValue());
 		}
 		return driverList;
+	}
+	
+	public ArrayList getStreetSegmentList()
+	{
+		ArrayList segmentList = new ArrayList();
+		for (Entry <String, StreetSegment> segmentEntry : getSg().entrySet())
+		{
+			segmentList.add(segmentEntry.getValue());
+		}
+		return segmentList;
 	}
 	
 	public ArrayList getDeliveryTicketList()
@@ -252,6 +272,20 @@ public class Courier {
 		if (constZone != null)
 		{
 			getConstzone().remove(constZone.getConstructionNo());
+		}
+	}
+	
+	public void addStreetSegment(StreetSegment sg)
+	{
+		if (sg != null)
+			getSg().put(sg.getId(), sg);
+	}
+	
+	public void removeStreetSegment(StreetSegment sg)
+	{
+		if (sg != null)
+		{
+			getSg().remove(sg.getId());
 		}
 	}
 	

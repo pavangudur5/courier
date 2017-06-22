@@ -1,15 +1,21 @@
 package courierPD;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class DeliveryTicket {
+	
+	DateTimeFormatter Dateformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	DateTimeFormatter Timeformatter = DateTimeFormatter.ofPattern("HH:mm"); 
+	
 	
 	private LocalDateTime date;
 	private LocalDateTime time;
 	private String ordertaken;
 	private String PickupCustomer;
 	private String CustomerNamep;
-	private String pickUpTime;
+	private LocalDateTime pickUpTime;
 	private String BillToPickUp;
 	private String DeliveryCustomerNumber;
 	private String CustomerNamed;
@@ -20,9 +26,14 @@ public class DeliveryTicket {
 	private String QuotedPrice;
 	private String DriverNumber;
 	private String AssignedTime;
-	private String ActPickUpTime;
-	private String ActDeliveryTime;
+	private LocalTime ActPickUpTime;
+	private LocalTime ActDeliveryTime;
 	private String Bonus;
+	
+//	String FormattedpickUpTime = pickUpTime.format(Timeformatter);
+//	String FormattedAcrDelUpTime = ActDeliveryTime.format(Timeformatter);
+	
+	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:MM");
 	
 	public DeliveryTicket() {
 		this.date = date.now();
@@ -30,7 +41,7 @@ public class DeliveryTicket {
 		this.ordertaken = "" ;
 		this.PickupCustomer = "";
 		this.CustomerNamep = "";
-		this.pickUpTime = "";
+		this.pickUpTime = time.now();
 		this.BillToPickUp = "";
 		this.DeliveryCustomerNumber = "";
 		this.CustomerNamed = "";
@@ -41,13 +52,13 @@ public class DeliveryTicket {
 		this.QuotedPrice = "";
 		this.DriverNumber = "";
 		this.AssignedTime = "";
-		this.ActPickUpTime = "";
-		this.ActDeliveryTime = "";
+		this.ActPickUpTime = LocalTime.now();
+		this.ActDeliveryTime = LocalTime.now();
 		this.Bonus = "";
 	}
 
 	public DeliveryTicket(LocalDateTime date, LocalDateTime time, String ordertaken, String pickupCustomer,
-			String customerNamep, String pickUpTime, String billToPickUp, String deliveryCustomerNumber,
+			String customerNamep, LocalDateTime pickUpTime, String billToPickUp, String deliveryCustomerNumber,
 			String customerNamed, String billToDeliveryUp, String packageId, String estDeliveryTime, String estBlocks,
 			String quotedPrice, String driverNumber, String assignedTime, String actPickUpTime, String actDeliveryTime,
 			String bonus) {
@@ -67,8 +78,8 @@ public class DeliveryTicket {
 		this.QuotedPrice = quotedPrice;
 		this.DriverNumber = driverNumber;
 		this.AssignedTime = assignedTime;
-		this.	ActPickUpTime = actPickUpTime;
-		this.ActDeliveryTime = actDeliveryTime;
+		setActPickUpTime(LocalTime.parse(actPickUpTime,formatter));
+		setActDeliveryTime(LocalTime.parse(actDeliveryTime, formatter));
 		this.Bonus = bonus;
 	}
 
@@ -112,11 +123,11 @@ public class DeliveryTicket {
 		this.CustomerNamep = customerNamep;
 	}
 
-	public String getPickUpTime() {
+	public LocalDateTime getPickUpTime() {
 		return this.pickUpTime;
 	}
 
-	public void setPickUpTime(String pickUpTime) {
+	public void setPickUpTime(LocalDateTime pickUpTime) {
 		this.pickUpTime = pickUpTime;
 	}
 
@@ -200,20 +211,20 @@ public class DeliveryTicket {
 		this.AssignedTime = assignedTime;
 	}
 
-	public String getActPickUpTime() {
+	public LocalTime getActPickUpTime() {
 		return this.ActPickUpTime;
 	}
 
-	public void setActPickUpTime(String actPickUpTime) {
+	public void setActPickUpTime(LocalTime actPickUpTime) {
 		this.ActPickUpTime = actPickUpTime;
 	}
 
-	public String getActDeliveryTime() {
+	public LocalTime getActDeliveryTime() {
 		return this.ActDeliveryTime;
 	}
 
-	public void setActDeliveryTime(String actDeliveryTime) {
-		this.ActDeliveryTime = actDeliveryTime;
+	public void setActDeliveryTime(LocalTime ef) {
+		this.ActDeliveryTime = ef;
 	}
 
 	public String getBonus() {
@@ -228,7 +239,4 @@ public class DeliveryTicket {
 	public String toString() {
 		return  "Order no:"+ getNumber()+ "by" +getOrdertaken() + " " + getBonus();
 	}
-	
-	
-
 }

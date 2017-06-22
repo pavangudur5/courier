@@ -84,7 +84,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return   getNumber()+ "    " + getName()+ "    " + getRole();
+		return   getName()+ "    " + getRole();
 	}
 	
 }

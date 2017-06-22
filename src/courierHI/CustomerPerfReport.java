@@ -3,7 +3,11 @@ package courierHI;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import courierPD.Courier;
+
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JList;
 
 public class CustomerPerfReport extends JPanel {
@@ -13,7 +17,7 @@ public class CustomerPerfReport extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CustomerPerfReport() {
+	public CustomerPerfReport(JFrame currentFrame, Courier courier) {
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Customer Performance Report");

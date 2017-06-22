@@ -67,7 +67,7 @@ public class StreetSegment  {
 
 	@Override
 	public String toString() {
-		return   getName() + " " + getSource() + " " +  getDestination() + " " + getWeight();
+		return   getId() + " " + getSource() + " " +  getDestination() + " " + getWeight();
 	}
 	
 	

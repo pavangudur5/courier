@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import courierPD.Courier;
+import courierPD.User;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -39,6 +40,7 @@ public class CourierJFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	static JMenuItem mntmUser ;
 	public CourierJFrame(final Courier courier) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 500);
@@ -48,7 +50,6 @@ public class CourierJFrame extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnMain = new JMenu("Maintenance");
-//		mnMain.setEnabled(false);
 		menuBar.add(mnMain);
 		
 		JMenuItem mntmCustomer = new JMenuItem("Customer");
@@ -71,7 +72,7 @@ public class CourierJFrame extends JFrame {
 		});
 		mnMain.add(mntmDriver);
 		
-		JMenuItem mntmUser = new JMenuItem("User");
+		mntmUser = new JMenuItem("User");
 		mntmUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				getContentPane().removeAll();
@@ -79,6 +80,7 @@ public class CourierJFrame extends JFrame {
 				getContentPane().revalidate();
 			}
 		});
+		mntmUser.setEnabled(true);
 		mnMain.add(mntmUser);
 		
 		JMenuItem mntmConstZone = new JMenuItem("Const. Zone");
@@ -145,12 +147,18 @@ public class CourierJFrame extends JFrame {
 		mnReports.add(mntmDeliveryBonusReport);
 		
 		JMenuItem mntmCustomerPerformanceReport = new JMenuItem("Customer Performance");
+		mntmCustomerPerformanceReport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				getContentPane().removeAll();
+				getContentPane().add(new CustomerPerfReport(currentFrame, courier));
+				getContentPane().revalidate();
+			}
+		});
 		mnReports.add(mntmCustomerPerformanceReport);
 		
 		contentPane = new CourierLogin(currentFrame, courier);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
 	}
 }

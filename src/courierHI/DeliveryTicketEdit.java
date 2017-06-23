@@ -27,26 +27,27 @@ import java.awt.event.ItemEvent;
 
 public class DeliveryTicketEdit extends JPanel {
 	private LocalDateTime Date = LocalDateTime.now();
+	// for displaying in label.
 	DateTimeFormatter Dateformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	DateTimeFormatter Timeformatter = DateTimeFormatter.ofPattern("HH:mm"); 
 	String FormattedDate = Date.format(Dateformatter);
 	String FormattedTime = Date.format(Timeformatter);
-	private JTextField textFieldCusName;
 	private JTextField textFieldPickUpTime;
 	private JTextField textFieldBillPickUp;
-	Random rand = new Random();
-	int  n = rand.nextInt(50) + 1;
-	String nn = "" + n;
+//	Random rand = new Random();
+//	int  n = rand.nextInt(50) + 1;
+//	String nn = "" + n;
 	private JTextField textFieldestdeltime;
 	private JTextField textFieldEstBlocks;
 	private JTextField textFieldQuotedPrice;
-	private JTextField textField;
+	private JTextField textFieldCusNumberd;
 	private JTextField textFieldBillDelivery;
 	private JTextField textFieldAssTime;
 	private JTextField textFieldActPickUp;
 	private JTextField textFieldActDel;
 	private JTextField textFieldBonus;
 	private JTextField textFieldPackageID;
+	private JTextField textFieldCusNumd;
 
 	/**
 	 * Create the panel.
@@ -86,11 +87,11 @@ public class DeliveryTicketEdit extends JPanel {
 		lblPickUpInfo.setBounds(22, 88, 75, 16);
 		add(lblPickUpInfo);
 		
-		JLabel lblCustomerNumber = new JLabel("Customer Number:");
+		JLabel lblCustomerNumber = new JLabel("Customer Name:");
 		lblCustomerNumber.setBounds(6, 115, 120, 16);
 		add(lblCustomerNumber);
 		
-		JLabel lblCustomerName = new JLabel("Customer  Name:");
+		JLabel lblCustomerName = new JLabel("Customer Number:");
 		lblCustomerName.setBounds(6, 143, 120, 16);
 		add(lblCustomerName);
 		
@@ -122,14 +123,9 @@ public class DeliveryTicketEdit extends JPanel {
 		lblQuotedPrice.setBounds(6, 361, 91, 16);
 		add(lblQuotedPrice);
 		
-		JComboBox comboBox = new JComboBox(courier.getCustomerList().toArray());
-		comboBox.setBounds(138, 111, 130, 27);
-		add(comboBox);
-		
-		textFieldCusName = new JTextField(deliveryticket.getCustomerNamep());
-		textFieldCusName.setBounds(138, 138, 130, 26);
-		add(textFieldCusName);
-		textFieldCusName.setColumns(10);
+		JComboBox comboBoxCusName = new JComboBox(courier.getCustomerList().toArray());
+		comboBoxCusName.setBounds(138, 111, 130, 27);
+		add(comboBoxCusName);
 		
 		textFieldPickUpTime = new JTextField();
 		textFieldPickUpTime.setBounds(138, 166, 130, 26);
@@ -141,7 +137,10 @@ public class DeliveryTicketEdit extends JPanel {
 		add(textFieldBillPickUp);
 		textFieldBillPickUp.setColumns(10);
 		
-		textFieldestdeltime = new JTextField(deliveryticket.getEstDeliveryTime());
+		
+		LocalTime ftp = LocalTime.now();
+		String FormattedTime = ftp.format(Timeformatter);
+		textFieldestdeltime = new JTextField(FormattedTime);
 		textFieldestdeltime.setBounds(138, 300, 130, 26);
 		add(textFieldestdeltime);
 		textFieldestdeltime.setColumns(10);
@@ -160,22 +159,22 @@ public class DeliveryTicketEdit extends JPanel {
 		lblDeliveryInfo.setBounds(333, 88, 85, 16);
 		add(lblDeliveryInfo);
 		
-		JLabel lblCustomerNumber_1 = new JLabel("Customer Number:");
+		JLabel lblCustomerNumber_1 = new JLabel("Customer Name:");
 		lblCustomerNumber_1.setBounds(319, 115, 120, 16);
 		add(lblCustomerNumber_1);
 		
-		JComboBox comboBox_1 = new JComboBox(courier.getCustomerList().toArray());
-		comboBox_1.setBounds(451, 111, 130, 27);
-		add(comboBox_1);
+		JComboBox comboCusNamed = new JComboBox(courier.getCustomerList().toArray());
+		comboCusNamed.setBounds(451, 111, 130, 27);
+		add(comboCusNamed);
 		
-		JLabel lblCustomerName_1 = new JLabel("Customer Name:");
+		JLabel lblCustomerName_1 = new JLabel("Customer Number:");
 		lblCustomerName_1.setBounds(319, 143, 120, 16);
 		add(lblCustomerName_1);
 		
-		textField = new JTextField();
-		textField.setBounds(451, 138, 130, 26);
-		add(textField);
-		textField.setColumns(10);
+		textFieldCusNumberd = new JTextField();
+		textFieldCusNumberd.setBounds(451, 138, 130, 26);
+		add(textFieldCusNumberd);
+		textFieldCusNumberd.setColumns(10);
 		
 		JLabel lblBillToDeliveryUp = new JLabel("Bill To Delivery Up:");
 		lblBillToDeliveryUp.setBounds(319, 171, 120, 16);
@@ -220,7 +219,9 @@ public class DeliveryTicketEdit extends JPanel {
 		add(textFieldActPickUp);
 		textFieldActPickUp.setColumns(10);
 		
-		textFieldActDel = new JTextField();
+		LocalTime ftp1 = LocalTime.now();
+		String FormattedTime1 = ftp.format(Timeformatter);
+		textFieldActDel = new JTextField(FormattedTime1); // default format HH:MM:SS.Mss
 		textFieldActDel.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -230,16 +231,16 @@ public class DeliveryTicketEdit extends JPanel {
 			private void calculatebonus() {
 				String esttime = deliveryticket.getEstDeliveryTime();
 				String acttime = textFieldActDel.getText();
-						System.out.println(esttime + acttime);
+//						System.out.println(esttime + acttime);
 				if (esttime.equalsIgnoreCase(acttime))
 				{ 
-					deliveryticket.setBonus("2");
-					textFieldBonus.setText("2");
+					deliveryticket.setBonus("0");
+					textFieldBonus.setText("0");
 				}
 				else //complete this
 				{
-					deliveryticket.setBonus("0");
-					textFieldBonus.setText("0");
+					deliveryticket.setBonus(courier.getBonusAmount());
+					textFieldBonus.setText(courier.getBonusAmount());
 				}
 				
 			}
@@ -255,7 +256,10 @@ public class DeliveryTicketEdit extends JPanel {
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!isAdd && !deliveryticket.getNumber().equals(n));
+				
+				User user = (User) comboBoxName.getSelectedItem();
+				
+				if (!isAdd && !deliveryticket.getNumber().equals(textFieldPackageID.getText()));
 				{
 					courier.removeDileveryTicket(deliveryticket);
 					deliveryticket.setNumber(textFieldPackageID.getText());
@@ -275,10 +279,12 @@ public class DeliveryTicketEdit extends JPanel {
 				
 				deliveryticket.setBonus(textFieldBonus.getText());
 				LocalTime ef,df;
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:MM");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 				ef = LocalTime.parse(textFieldActDel.getText(), formatter);
 				df = LocalTime.parse(textFieldPickUpTime.getText(), formatter);
 				deliveryticket.setActDeliveryTime(ef);
+				deliveryticket.setActPickUpTime(df);
+				deliveryticket.setDeliveryCustomerNumber(textFieldCusNumd.getText());
 			}
 		});
 		btnSave.setBounds(154, 402, 117, 29);
@@ -308,13 +314,14 @@ public class DeliveryTicketEdit extends JPanel {
 		add(btnGenerateDriverCopy);
 		
 		textFieldPackageID = new JTextField(deliveryticket.getNumber());
-		textFieldPackageID.setBounds(138, 249, 130, 26);
+		textFieldPackageID.setBounds(138, 272, 130, 26);
 		add(textFieldPackageID);
 		textFieldPackageID.setColumns(10);
 		
-		JLabel labelpacid = new JLabel(nn);
-		labelpacid.setBounds(138, 277, 61, 16);
-		add(labelpacid);
+		textFieldCusNumd = new JTextField(deliveryticket.getDeliveryCustomerNumber());
+		textFieldCusNumd.setBounds(138, 138, 130, 26);
+		add(textFieldCusNumd);
+		textFieldCusNumd.setColumns(10);
 
 	}
 }

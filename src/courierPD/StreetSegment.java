@@ -6,7 +6,6 @@ public class StreetSegment  {
 	private Intersection source;
 	private Intersection destination;
 	private int weight;
-	private String name;
 	
 	public StreetSegment()
 	{
@@ -14,7 +13,6 @@ public class StreetSegment  {
 		source = new Intersection();
 		destination = new Intersection();
 		weight = 999;
-		name = " ";
 	}
 	
 	public StreetSegment(String id, Intersection source, Intersection destination, int weight) {
@@ -22,8 +20,7 @@ public class StreetSegment  {
 		this.source = source;
 		this.destination = destination;
 		this.weight = weight;
-		this.name = name;
-	}
+		}
 
 	public String getId() {
 		return this.id;
@@ -55,14 +52,6 @@ public class StreetSegment  {
 
 	public void setWeight(int weight) {
 		this.weight = weight;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	@Override

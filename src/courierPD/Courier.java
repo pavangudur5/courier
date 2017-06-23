@@ -24,7 +24,6 @@ public class Courier {
 	private TreeMap<String, ConstZone> constzone;
 	private TreeMap<String, StreetSegment> sg;
 	
-	
 	public Courier()
 	{
 		this.getname();

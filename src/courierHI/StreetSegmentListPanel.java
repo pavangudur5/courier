@@ -3,6 +3,7 @@ package courierHI;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import courierPD.ConstZone;
 import courierPD.Courier;
 import courierPD.Driver;
 import courierPD.StreetSegment;
@@ -57,16 +58,38 @@ public class StreetSegmentListPanel extends JPanel {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				}
+=======
+				SteetSegmentEditPanel streetsegmenteditpanel = new SteetSegmentEditPanel(currentFrame,  courier, new StreetSegment(), true);
+				currentFrame.getContentPane().removeAll();
+				currentFrame.getContentPane().add(streetsegmenteditpanel);
+				currentFrame.revalidate();
+			}
+>>>>>>> branch 'dev' of https://github.com/pavangudur5/courier.git
 		});
 		btnAdd.setBounds(36, 242, 117, 29);
 		add(btnAdd);
 		
 		btnEdit = new JButton("Edit");
+		btnEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SteetSegmentEditPanel streetsegmenteditpanel = new SteetSegmentEditPanel(currentFrame,  courier, (StreetSegment)list.getSelectedValue(), false);
+				currentFrame.getContentPane().removeAll();
+				currentFrame.getContentPane().add(streetsegmenteditpanel);
+				currentFrame.revalidate();
+			}
+		});
 		btnEdit.setBounds(163, 242, 117, 29);
 		add(btnEdit);
 		
 		btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				courier.removeStreetSegment((StreetSegment)list.getSelectedValue());
+				listModel.removeElement(list.getSelectedValue());
+			}
+		});
 		btnDelete.setBounds(292, 242, 117, 29);
 		add(btnDelete);
 		

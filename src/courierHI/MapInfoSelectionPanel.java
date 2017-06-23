@@ -30,9 +30,17 @@ public class MapInfoSelectionPanel extends JPanel {
 		add(btnStreetSegment, BorderLayout.WEST);
 		
 		JButton btnIntersections = new JButton("Intersections");
+		btnIntersections.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IntersectionListPanel intersectionlistpanel = new IntersectionListPanel(currentFrame , courier);
+				currentFrame.getContentPane().removeAll();
+				currentFrame.getContentPane().add(intersectionlistpanel);
+				currentFrame.revalidate();
+			}
+		});
 		add(btnIntersections, BorderLayout.EAST);
 		
-		JLabel lblMapInfo = new JLabel("         \t      Map Info");
+		JLabel lblMapInfo = new JLabel("         \t     \t\t Map Info");
 		add(lblMapInfo, BorderLayout.CENTER);
 
 	}

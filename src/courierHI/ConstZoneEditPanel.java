@@ -1,4 +1,4 @@
-package courierHI;
+ package courierHI;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;

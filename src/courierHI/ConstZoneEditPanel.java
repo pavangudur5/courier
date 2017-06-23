@@ -12,6 +12,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 
 
@@ -49,6 +52,7 @@ public class ConstZoneEditPanel extends JPanel {
 		JComboBox IntNo = new JComboBox(courier.getStreetSegmentList().toArray());
 		IntNo.setBounds(175, 133, 130, 27);
 		add(IntNo);
+		
 		
 		FromDate = new JTextField();
 		String getFromDate = constzone.getStartDate().toString();

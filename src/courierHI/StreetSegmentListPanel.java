@@ -38,9 +38,8 @@ public class StreetSegmentListPanel extends JPanel {
 		
 		DefaultListModel listModel = new DefaultListModel();
 		for (Entry<String, StreetSegment> streetsegmentEntry : courier.getSg().entrySet())
-		{
-			listModel.addElement(streetsegmentEntry.getValue());
-		}
+		listModel.addElement(streetsegmentEntry.getValue());
+		
 		
 		JList list = new JList(listModel);
 		list.addListSelectionListener(new ListSelectionListener() {
@@ -58,8 +57,7 @@ public class StreetSegmentListPanel extends JPanel {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-			}
+				}
 		});
 		btnAdd.setBounds(36, 242, 117, 29);
 		add(btnAdd);

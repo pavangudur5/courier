@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import courierPD.Courier;
@@ -69,7 +70,14 @@ public class CourierDM {
 	
 		Graph graph = new Graph(nodes, edges);
 		DijAlgo DijAlgo = new DijAlgo(graph);
-
+		DijAlgo.execute(nodes.get(1));
+		LinkedList<Intersection> path = DijAlgo.getPath(nodes.get(7)); //  this is just an example for now. 
+//		Intersection intersection = new Intersection();
+//		System.out.println(intersection .toString());
+        
+		for (Intersection inter : path) {
+            System.out.println(inter);
+        }
 	}
 
 		private static void addLane(String id, int source, int destination, int weight, List<Intersection> nodes, List<StreetSegment> edges) {

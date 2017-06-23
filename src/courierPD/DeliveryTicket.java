@@ -33,7 +33,7 @@ public class DeliveryTicket {
 //	String FormattedpickUpTime = pickUpTime.format(Timeformatter);
 //	String FormattedAcrDelUpTime = ActDeliveryTime.format(Timeformatter);
 	
-	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:MM");
+	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 	
 	public DeliveryTicket() {
 		this.date = date.now();

@@ -34,10 +34,10 @@ public class DijAlgo {
 		NotVisited.add(Source);
 		while (NotVisited.size() > 0)
 		{
-		Intersection node = getMinimum(NotVisited);
-		Visited.add(node);
-		NotVisited.remove(node);
-		findMinimalDistance(node);
+			Intersection node = getMinimum(NotVisited);
+			Visited.add(node);
+			NotVisited.remove(node);
+			findMinimalDistance(node);
 		}
 	}
 	

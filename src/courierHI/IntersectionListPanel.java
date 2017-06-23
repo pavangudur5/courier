@@ -13,6 +13,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
+import java.util.Map.Entry;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
@@ -27,9 +28,9 @@ public class IntersectionListPanel extends JPanel {
 	public IntersectionListPanel(JFrame currentFrame, Courier courier) {
 		setLayout(null);
 		
-//		DefaultListModel listModel = new DefaultListModel();
-//		for (Entry<String, Intersection> intersectionEntry : courier.getIntersection().entrySet())
-//				listModel.addElement(intersectionEntry.getValue());
+		DefaultListModel listModel = new DefaultListModel();
+		for (Entry<String, Intersection> intersectionEntry : courier.getIs().entrySet())
+				listModel.addElement(intersectionEntry.getValue());
 		
 		JLabel lblIntersections = new JLabel("Intersections");
 		lblIntersections.setBounds(174, 18, 82, 16);
@@ -39,7 +40,7 @@ public class IntersectionListPanel extends JPanel {
 		scrollPane.setBounds(55, 55, 338, 146);
 		add(scrollPane);
 		
-		JList list = new JList();
+		JList list = new JList(listModel);
 		list.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				if(list.getSelectedValue() != null)

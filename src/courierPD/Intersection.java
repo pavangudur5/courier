@@ -58,7 +58,7 @@ public class Intersection{
 
 	@Override
 	public String toString() {
-		return getName();
+		return getId();
 	}
 	
 

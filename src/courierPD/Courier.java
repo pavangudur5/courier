@@ -23,6 +23,7 @@ public class Courier {
 	private TreeMap<String, DeliveryTicket> deliveryTicket;
 	private TreeMap<String, ConstZone> constzone;
 	private TreeMap<String, StreetSegment> sg;
+	private TreeMap<String, Intersection> is;//
 	
 	public Courier()
 	{
@@ -37,6 +38,7 @@ public class Courier {
 		user = new TreeMap <String, User>();
 		deliveryTicket = new TreeMap <String, DeliveryTicket>();
 		constzone = new TreeMap <String, ConstZone>();
+		is = new TreeMap <String, Intersection>();//
 		sg = new TreeMap <String, StreetSegment>();
 	}
 
@@ -143,6 +145,14 @@ public class Courier {
 		this.sg = sg;
 	}
 
+	public TreeMap<String, Intersection> getIs() {
+		return this.is;
+	}
+
+	public void setIs(TreeMap<String, Intersection> is) {
+		this.is = is;
+	}
+
 	public ArrayList getCustomerList()
 	{
 		ArrayList customerList = new ArrayList();
@@ -191,6 +201,16 @@ public class Courier {
 			deliveryTicketList.add(deliveryTicketEntry.getValue());
 		}
 		return deliveryTicketList;
+	}
+	
+	public ArrayList getIntersectionList()////
+	{
+		ArrayList intersectionList = new ArrayList();
+		for (Entry <String, Intersection> intersectionListEntry : getIs().entrySet())
+		{
+			intersectionList.add(intersectionListEntry.getValue());
+		}
+		return intersectionList;
 	}
 	
 	public void addCustomer(Customer customer)
@@ -286,6 +306,18 @@ public class Courier {
 		{
 			getSg().remove(sg.getId());
 		}
+	}
+	
+	public void addIntersection(Intersection is)
+	{
+		if (is != null)
+			getIs().put(is.getId(), is);
+	}
+	
+	public void removeIntersection(Intersection is)
+	{
+		if (is != null)
+			getIs().remove(is.getId());
 	}
 	
 	@Override

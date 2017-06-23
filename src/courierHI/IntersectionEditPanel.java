@@ -39,16 +39,16 @@ public class IntersectionEditPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(!isAdd && !intersection.getId().equals(textField.getText()))
 				{
-//					courier.removeStreetSegment(intersection);
+					courier.removeIntersection(intersection);
 					intersection.setId(textField.getText());
-//					courier.addStreetSegment(intersection);
+					courier.addIntersection(intersection);
 				}
+				
 				if (isAdd)
 				{
 					intersection.setId(textField.getText());
-//					courier.addStreetSegment(intersection);
+					courier.addIntersection(intersection);
 				}
-				int weight = Integer.parseInt(textField.getText());
 				
 				currentFrame.getContentPane().removeAll();
 				currentFrame.getContentPane().add(new StreetSegmentListPanel(currentFrame,courier));
@@ -68,7 +68,5 @@ public class IntersectionEditPanel extends JPanel {
 		});
 		btnCancel.setBounds(236, 193, 117, 29);
 		add(btnCancel);
-
 	}
-
 }

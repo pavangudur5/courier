@@ -58,15 +58,11 @@ public class StreetSegmentListPanel extends JPanel {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				}
-=======
 				SteetSegmentEditPanel streetsegmenteditpanel = new SteetSegmentEditPanel(currentFrame,  courier, new StreetSegment(), true);
 				currentFrame.getContentPane().removeAll();
 				currentFrame.getContentPane().add(streetsegmenteditpanel);
 				currentFrame.revalidate();
 			}
->>>>>>> branch 'dev' of https://github.com/pavangudur5/courier.git
 		});
 		btnAdd.setBounds(36, 242, 117, 29);
 		add(btnAdd);

@@ -279,12 +279,14 @@ public class DeliveryTicketEdit extends JPanel {
 				
 				deliveryticket.setBonus(textFieldBonus.getText());
 				LocalTime ef,df;
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-				ef = LocalTime.parse(textFieldActDel.getText(), formatter);
-				df = LocalTime.parse(textFieldPickUpTime.getText(), formatter);
-				deliveryticket.setActDeliveryTime(ef);
-				deliveryticket.setActPickUpTime(df);
+//				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+//				ef = LocalTime.parse(textFieldActDel.getText(), formatter);
+//				df = LocalTime.parse(textFieldPickUpTime.getText(), formatter);
+//				deliveryticket.setActDeliveryTime(ef);
+//				deliveryticket.setActPickUpTime(df);
 				deliveryticket.setDeliveryCustomerNumber(textFieldCusNumd.getText());
+				String x = String.valueOf(comboBoxName.getSelectedItem());
+				deliveryticket.setOrdertaken(x);
 			}
 		});
 		btnSave.setBounds(154, 402, 117, 29);

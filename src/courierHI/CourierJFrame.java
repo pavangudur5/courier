@@ -19,7 +19,11 @@ import java.awt.event.ActionEvent;
 public class CourierJFrame extends JFrame {
 
 	private JPanel contentPane;
-	private JFrame currentFrame;
+	private CourierJFrame currentFrame;
+	private JMenuBar menuBar;
+	private JMenu mnMain;
+	private JMenu mnReports;
+	private JMenuItem mntmUser;
 
 	/**
 	 * Launch the application.
@@ -40,16 +44,16 @@ public class CourierJFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	static JMenuItem mntmUser ;
+
 	public CourierJFrame(final Courier courier) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 500);
 		currentFrame = this;
 		
-		JMenuBar menuBar = new JMenuBar();
+		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnMain = new JMenu("Maintenance");
+		 mnMain = new JMenu("Maintenance");
 		menuBar.add(mnMain);
 		
 		JMenuItem mntmCustomer = new JMenuItem("Customer");
@@ -123,7 +127,7 @@ public class CourierJFrame extends JFrame {
 		});
 		mnMain.add(mntmDeliveryTicket);
 		
-		JMenu mnReports = new JMenu("Reports");
+		mnReports = new JMenu("Reports");
 		menuBar.add(mnReports);
 		
 		JMenuItem mntmWeeklyBillReport = new JMenuItem("Weekly Bill");
@@ -160,5 +164,20 @@ public class CourierJFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+	}
+	
+	public void enableMenuBar() {
+		mnMain.setEnabled(true);
+		mnReports.setEnabled(true);
+	}
+	public void disableMenuBar() {
+		mnMain.setEnabled(false);
+		mnReports.setEnabled(false);
+	}
+	public void enableusers() {
+		mntmUser.setEnabled(true);
+	}
+	public void disableusers() {
+		mntmUser.setEnabled(false);
 	}
 }

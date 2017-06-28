@@ -27,10 +27,12 @@ public class CourierLogin extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CourierLogin(JFrame currentFrame, Courier courier) {
+	public CourierLogin(CourierJFrame currentFrame, Courier courier) {
 		setLayout(null);
 		
-		
+		currentFrame.disableMenuBar();
+		currentFrame.disableusers();
+		currentFrame.getContentPane().revalidate();
 		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setBounds(200, 26, 61, 16);
 		add(lblLogin);
@@ -54,9 +56,22 @@ public class CourierLogin extends JPanel {
 				
 				if(user.isAuthorized(passwordField.getText()) )
 				{
+					if(user.getRole() == "admin")
+					{
 						currentFrame.getContentPane().removeAll();
 						currentFrame.getContentPane().add(new CourierHomePanel(courier));
+						currentFrame.enableMenuBar();
+						currentFrame.enableusers();
 						currentFrame.getContentPane().revalidate();
+					}
+					if(user.getRole() != "admin")
+					{
+						currentFrame.getContentPane().removeAll();
+						currentFrame.getContentPane().add(new CourierHomePanel(courier));
+						currentFrame.enableMenuBar();
+						currentFrame.getContentPane().revalidate();
+					}
+						
 				}
 				else
 				{

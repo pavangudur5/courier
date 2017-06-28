@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -12,13 +11,14 @@ import java.util.List;
 
 import courierPD.Courier;
 import courierPD.Customer;
-import courierPD.DeliveryTicket;
 import courierPD.DijAlgo;
 import courierPD.Driver;
 import courierPD.Graph;
 import courierPD.Intersection;
 import courierPD.StreetSegment;
 import courierPD.User;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class CourierDM {
 	
@@ -72,8 +72,9 @@ public class CourierDM {
 		DijAlgo DijAlgo = new DijAlgo(graph);
 		DijAlgo.execute(nodes.get(1));
 		LinkedList<Intersection> path = DijAlgo.getPath(nodes.get(7)); //  this is just an example for now. 
-//		Intersection intersection = new Intersection();
-//		System.out.println(intersection .toString());
+		
+//		assertNotNull(path);
+//        assertTrue(path.size() > 0);
         
 		for (Intersection inter : path) {
             System.out.println(inter);

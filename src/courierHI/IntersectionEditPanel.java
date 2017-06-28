@@ -43,7 +43,6 @@ public class IntersectionEditPanel extends JPanel {
 					intersection.setId(textField.getText());
 					courier.addIntersection(intersection);
 				}
-				
 				if (isAdd)
 				{
 					intersection.setId(textField.getText());

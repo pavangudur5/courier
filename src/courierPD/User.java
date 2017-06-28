@@ -29,6 +29,11 @@ public class User {
 		this.role = role;
 		
 	}
+	
+	public User(String name)
+	{
+		this.name = name;
+	}
 
 	public String getName() {
 		return this.name;

@@ -87,6 +87,17 @@ public class DeliveryTicketList extends JPanel {
 		btnDelete.setEnabled(false);
 		add(btnDelete);
 		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				currentFrame.getContentPane().removeAll();
+				currentFrame.getContentPane().add(currentFrame,courier);
+				currentFrame.revalidate();
+			}
+		});
+		btnBack.setBounds(171, 271, 117, 29);
+		add(btnBack);
+		
 		
 
 	}

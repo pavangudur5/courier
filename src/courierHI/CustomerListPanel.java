@@ -91,6 +91,17 @@ public class CustomerListPanel extends JPanel {
 		btnDelete.setBounds(287, 252, 117, 29);
 		add(btnDelete);
 		btnDelete.setEnabled(false);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				currentFrame.getContentPane().removeAll();
+				currentFrame.getContentPane().add(currentFrame,courier);
+				currentFrame.revalidate();
+			}
+		});
+		btnBack.setBounds(167, 285, 117, 29);
+		add(btnBack);
 
 	}
 }

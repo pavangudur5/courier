@@ -3,6 +3,7 @@ package courierHI;
 import javax.swing.JPanel;
 
 import courierPD.Courier;
+import courierPD.Customer;
 import courierPD.DeliveryTicket;
 import courierPD.Driver;
 import courierPD.User;
@@ -17,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -29,7 +31,7 @@ public class DeliveryTicketEdit extends JPanel {
 	private LocalDateTime Date = LocalDateTime.now();
 	// for displaying in label.
 	DateTimeFormatter Dateformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	DateTimeFormatter Timeformatter = DateTimeFormatter.ofPattern("HH:mm"); 
+	private DateTimeFormatter Timeformatter = DateTimeFormatter.ofPattern("HH:mm");
 	String FormattedDate = Date.format(Dateformatter);
 	String FormattedTime = Date.format(Timeformatter);
 	private JTextField textFieldPickUpTime;
@@ -48,6 +50,10 @@ public class DeliveryTicketEdit extends JPanel {
 	private JTextField textFieldBonus;
 	private JTextField textFieldPackageID;
 	private JTextField textFieldCusNumd;
+	private JComboBox comboBoxName;
+	private JComboBox comboBoxCusName;
+	private JComboBox comboCusNamed;
+	private JComboBox ComboDriverNum;
 
 	/**
 	 * Create the panel.
@@ -79,9 +85,31 @@ public class DeliveryTicketEdit extends JPanel {
 		lblOrderTakenBy.setBounds(364, 54, 106, 16);
 		add(lblOrderTakenBy);
 		
-		JComboBox comboBoxName = new JComboBox(courier.getUserList().toArray());
+		DefaultComboBoxModel ulist = new DefaultComboBoxModel(courier.getUserList().toArray());
+		comboBoxName = new JComboBox(ulist);
+		if(!isAdd) comboBoxName.setSelectedItem(deliveryticket.getOrdertaken());
 		comboBoxName.setBounds(469, 50, 101, 27);
 		add(comboBoxName);
+		
+		DefaultComboBoxModel calist = new DefaultComboBoxModel(courier.getCustomerList().toArray());
+		comboBoxCusName = new JComboBox(calist);
+		if(!isAdd) comboBoxName.setSelectedItem(deliveryticket.getCustomerNamep());
+//		textFieldCusNumd.setText(deliveryticket.getDeliveryCustomerNumber().getNumber());
+		comboBoxCusName.setBounds(138, 111, 130, 27);
+		add(comboBoxCusName);
+	
+		DefaultComboBoxModel cblist = new DefaultComboBoxModel(courier.getCustomerList().toArray());
+		comboCusNamed = new JComboBox(cblist);
+		if(!isAdd) comboBoxName.setSelectedItem(deliveryticket.getCustomerNamep());
+		comboCusNamed.setBounds(451, 111, 130, 27);
+		add(comboCusNamed);
+		
+		DefaultComboBoxModel dlist = new DefaultComboBoxModel(courier.getDriverList().toArray());
+		ComboDriverNum = new JComboBox(dlist);
+		if(!isAdd) comboBoxName.setSelectedItem(deliveryticket.getDriverNumber());
+		ComboDriverNum.setBounds(451, 245, 106, 27);
+		add(ComboDriverNum);
+		
 		
 		JLabel lblPickUpInfo = new JLabel("Pick up info");
 		lblPickUpInfo.setBounds(22, 88, 75, 16);
@@ -123,10 +151,6 @@ public class DeliveryTicketEdit extends JPanel {
 		lblQuotedPrice.setBounds(6, 361, 91, 16);
 		add(lblQuotedPrice);
 		
-		JComboBox comboBoxCusName = new JComboBox(courier.getCustomerList().toArray());
-		comboBoxCusName.setBounds(138, 111, 130, 27);
-		add(comboBoxCusName);
-		
 		textFieldPickUpTime = new JTextField();
 		textFieldPickUpTime.setBounds(138, 166, 130, 26);
 		add(textFieldPickUpTime);
@@ -136,7 +160,6 @@ public class DeliveryTicketEdit extends JPanel {
 		textFieldBillPickUp.setBounds(138, 194, 130, 26);
 		add(textFieldBillPickUp);
 		textFieldBillPickUp.setColumns(10);
-		
 		
 		LocalTime ftp = LocalTime.now();
 		String FormattedTime = ftp.format(Timeformatter);
@@ -162,10 +185,6 @@ public class DeliveryTicketEdit extends JPanel {
 		JLabel lblCustomerNumber_1 = new JLabel("Customer Name:");
 		lblCustomerNumber_1.setBounds(319, 115, 120, 16);
 		add(lblCustomerNumber_1);
-		
-		JComboBox comboCusNamed = new JComboBox(courier.getCustomerList().toArray());
-		comboCusNamed.setBounds(451, 111, 130, 27);
-		add(comboCusNamed);
 		
 		JLabel lblCustomerName_1 = new JLabel("Customer Number:");
 		lblCustomerName_1.setBounds(319, 143, 120, 16);
@@ -205,10 +224,6 @@ public class DeliveryTicketEdit extends JPanel {
 		lblBonus.setBounds(319, 361, 61, 16);
 		add(lblBonus);
 		
-		JComboBox ComboDriverNum = new JComboBox(courier.getDriverList().toArray());
-		ComboDriverNum.setBounds(451, 245, 106, 27);
-		add(ComboDriverNum);
-		
 		textFieldAssTime = new JTextField();
 		textFieldAssTime.setBounds(451, 272, 130, 26);
 		add(textFieldAssTime);
@@ -225,25 +240,25 @@ public class DeliveryTicketEdit extends JPanel {
 		textFieldActDel.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				calculatebonus();
+//				calculatebonus();
 			}
 
-			private void calculatebonus() {
-				String esttime = deliveryticket.getEstDeliveryTime();
-				String acttime = textFieldActDel.getText();
-//						System.out.println(esttime + acttime);
-				if (esttime.equalsIgnoreCase(acttime))
-				{ 
-					deliveryticket.setBonus("0");
-					textFieldBonus.setText("0");
-				}
-				else //complete this
-				{
-					deliveryticket.setBonus(courier.getBonusAmount());
-					textFieldBonus.setText(courier.getBonusAmount());
-				}
-				
-			}
+//			private void calculatebonus() {
+////				String esttime = deliveryticket.getEstDeliveryTime();
+//				String acttime = textFieldActDel.getText();
+////						System.out.println(esttime + acttime);
+//				if (esttime.equalsIgnoreCase(acttime))
+//				{ 
+//					deliveryticket.setBonus("0");
+//					textFieldBonus.setText("0");
+//				}
+//				else //complete this
+//				{
+//					deliveryticket.setBonus(courier.getBonusAmount());
+//					textFieldBonus.setText(courier.getBonusAmount());
+//				}
+//				
+//			}
 		});
 		textFieldActDel.setBounds(451, 328, 130, 26);
 		add(textFieldActDel);
@@ -279,14 +294,16 @@ public class DeliveryTicketEdit extends JPanel {
 				
 				deliveryticket.setBonus(textFieldBonus.getText());
 				LocalTime ef,df;
-//				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-//				ef = LocalTime.parse(textFieldActDel.getText(), formatter);
-//				df = LocalTime.parse(textFieldPickUpTime.getText(), formatter);
+//				ef = LocalTime.parse(textFieldActDel.getText(), Timeformatter);
+//				df = LocalTime.parse(textFieldPickUpTime.getText(), Timeformatter);
 //				deliveryticket.setActDeliveryTime(ef);
 //				deliveryticket.setActPickUpTime(df);
-				deliveryticket.setDeliveryCustomerNumber(textFieldCusNumd.getText());
-				String x = String.valueOf(comboBoxName.getSelectedItem());
-				deliveryticket.setOrdertaken(x);
+				ef = LocalTime.parse(textFieldestdeltime.getText(),Timeformatter);
+				deliveryticket.setEstDeliveryTime(ef);
+				deliveryticket.setOrdertaken((User) comboBoxName.getSelectedItem());
+				deliveryticket.setDriverNumber((Driver) ComboDriverNum.getSelectedItem());
+				deliveryticket.setCustomerNamed((Customer) comboCusNamed.getSelectedItem());
+//				deliveryticket.setCustomerNamep((Customer) comboBoxName.getSelectedItem()); 
 			}
 		});
 		btnSave.setBounds(154, 402, 117, 29);
@@ -296,10 +313,10 @@ public class DeliveryTicketEdit extends JPanel {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				currentFrame.getContentPane().removeAll();
+		currentFrame.getContentPane().removeAll();
 				currentFrame.getContentPane().add(new DeliveryTicketList(currentFrame,courier));
 				currentFrame.getContentPane().revalidate();
-			}
+					}
 		});
 		btnCancel.setBounds(319, 402, 117, 29);
 		add(btnCancel);
@@ -320,10 +337,9 @@ public class DeliveryTicketEdit extends JPanel {
 		add(textFieldPackageID);
 		textFieldPackageID.setColumns(10);
 		
-		textFieldCusNumd = new JTextField(deliveryticket.getDeliveryCustomerNumber());
+		textFieldCusNumd = new JTextField();
 		textFieldCusNumd.setBounds(138, 138, 130, 26);
 		add(textFieldCusNumd);
 		textFieldCusNumd.setColumns(10);
-
 	}
 }

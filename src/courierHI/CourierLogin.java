@@ -54,24 +54,13 @@ public class CourierLogin extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				User user = (User) usercomboBox.getSelectedItem();
 				
-				if(user.isAuthorized(passwordField.getText()) )
+				if(user.isAuthorized(passwordField.getText()))
 				{
-					if(user.getRole() == "admin")
-					{
 						currentFrame.getContentPane().removeAll();
 						currentFrame.getContentPane().add(new CourierHomePanel(courier));
 						currentFrame.enableMenuBar();
 						currentFrame.enableusers();
-						currentFrame.getContentPane().revalidate();
-					}
-					if(user.getRole() != "admin")
-					{
-						currentFrame.getContentPane().removeAll();
-						currentFrame.getContentPane().add(new CourierHomePanel(courier));
-						currentFrame.enableMenuBar();
-						currentFrame.getContentPane().revalidate();
-					}
-						
+						currentFrame.getContentPane().revalidate();		
 				}
 				else
 				{

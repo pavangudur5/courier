@@ -49,7 +49,7 @@ public class ConstZoneEditPanel extends JPanel {
 		lblToDate.setBounds(48, 193, 49, 16);
 		add(lblToDate);
 		
-		JComboBox IntNo = new JComboBox(courier.getStreetSegmentList().toArray());
+		JComboBox IntNo = new JComboBox(courier.getIntersectionList().toArray());
 		IntNo.setBounds(175, 133, 130, 27);
 		add(IntNo);
 		

@@ -1,7 +1,6 @@
 package courierHI;
 
 import courierDM.CourierDM;
-import courierDM.LoadMap;
 import courierHI.CourierJFrame;
 import courierPD.Courier;
 

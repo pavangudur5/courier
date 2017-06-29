@@ -48,6 +48,7 @@ public class DijAlgo {
 			if(getShortestDistance(target) > getShortestDistance(node) + getDistance(node, target)) {
 				distance.put(target, getShortestDistance(node) + getDistance(node, target));
 				Predecessors.put(target, node);
+//				System.out.println(target);
 				NotVisited.add(target);
 			}
 		}
@@ -113,8 +114,9 @@ public class DijAlgo {
 	public LinkedList<Intersection> getPath(Intersection target) {
 		LinkedList<Intersection> path = new LinkedList<Intersection>();
 		Intersection step = target;
-		if (Predecessors.get(step) == null)
+		if (Predecessors.get(step) == null){
 			return null;
+		}
 		path.add(step);
 		while (Predecessors.get(step) != null)
 		{

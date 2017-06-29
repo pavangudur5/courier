@@ -50,7 +50,7 @@ public class IntersectionEditPanel extends JPanel {
 				}
 				
 				currentFrame.getContentPane().removeAll();
-				currentFrame.getContentPane().add(new StreetSegmentListPanel(currentFrame,courier));
+				currentFrame.getContentPane().add(new IntersectionListPanel(currentFrame,courier));
 				currentFrame.getContentPane().revalidate();
 			}
 		});

@@ -91,7 +91,7 @@ public class DeliveryTicketList extends JPanel {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				currentFrame.getContentPane().removeAll();
-				currentFrame.getContentPane().add(currentFrame,courier);
+				currentFrame.getContentPane().add(new CourierHomePanel(courier));
 				currentFrame.revalidate();
 			}
 		});

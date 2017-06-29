@@ -7,11 +7,12 @@ public class Customer {
 	private String avenue;
 	private String street;
 	private String Phno;
+	private Intersection address;
 	
 	public Customer()
 	{
-		this.number = " ";
-		this.name = " ";
+		this.number = "";
+		this.name = "";
 		this.avenue = "";
 		this.street = "";
 		this.Phno = " ";

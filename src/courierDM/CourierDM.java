@@ -32,9 +32,9 @@ public class CourierDM {
 		for(int i = 0; i < 102; i++ )
 		{
 			Intersection location = new Intersection("" +i, "" +i);
-		nodes.add(location);
+			nodes.add(location);
+			mycourier.addIntersection(location);
 		}
-		
 		
 		String fileName1 = "streets.csv";
 		String line = null;
@@ -51,7 +51,7 @@ public class CourierDM {
 				int x = Integer.parseInt(block[2]);
 				int y = Integer.parseInt(block[3]);
 				int z = Integer.parseInt(block[4]);
-				addLane(block[1],x,y,z,nodes,edges);
+				addLane(block[1],x,y,z,nodes,edges,mycourier);
 				break;
 				default:
 					System.out.println("something is rong in loading map info");
@@ -71,19 +71,21 @@ public class CourierDM {
 		Graph graph = new Graph(nodes, edges);
 		DijAlgo DijAlgo = new DijAlgo(graph);
 		DijAlgo.execute(nodes.get(1));
-		LinkedList<Intersection> path = DijAlgo.getPath(nodes.get(7)); //  this is just an example for now. 
+		LinkedList<Intersection> path = new LinkedList<Intersection>();
+		path = DijAlgo.getPath(nodes.get(7)); //  this is just an example for now. 
 		
-//		assertNotNull(path);
 //        assertTrue(path.size() > 0);
-        
+		
 		for (Intersection inter : path) {
             System.out.println(inter);
         }
 	}
 
-		private static void addLane(String id, int source, int destination, int weight, List<Intersection> nodes, List<StreetSegment> edges) {
+		private static void addLane(String id, int source, int destination, int weight, List<Intersection> nodes, List<StreetSegment> edges, Courier mycourier) {
 			StreetSegment lane = new StreetSegment(id, nodes.get(source), nodes.get(destination), weight);
 			edges.add(lane);
+			mycourier.addStreetSegment(lane);
+			
 		}
 
 	public static void LoadCompanyInfo(Courier mycourier) throws Exception

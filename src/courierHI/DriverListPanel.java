@@ -92,6 +92,17 @@ public class DriverListPanel extends JPanel {
 		btnDelete.setBounds(307, 240, 117, 29);
 		btnDelete.setEnabled(false);
 		add(btnDelete);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				currentFrame.getContentPane().removeAll();
+				currentFrame.getContentPane().add(new CourierHomePanel(courier));
+				currentFrame.revalidate();
+			}
+		});
+		btnBack.setBounds(177, 271, 117, 29);
+		add(btnBack);
 
 	}
 }

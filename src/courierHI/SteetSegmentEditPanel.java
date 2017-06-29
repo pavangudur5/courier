@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import courierPD.Courier;
+import courierPD.Graph;
+import courierPD.Intersection;
 import courierPD.StreetSegment;
 
 import javax.swing.JLabel;
@@ -16,6 +18,8 @@ import java.awt.event.ActionEvent;
 public class SteetSegmentEditPanel extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
+	JComboBox comboBoxSource ;
+	JComboBox comboBoxDestination ;
 
 	/**
 	 * Create the panel.
@@ -43,11 +47,19 @@ public class SteetSegmentEditPanel extends JPanel {
 		lblWeight.setBounds(49, 189, 61, 16);
 		add(lblWeight);
 		
-		JComboBox comboBoxSource = new JComboBox();
+		comboBoxSource = new JComboBox();
+		// i have a variable in other class. where the data 
+		// of that variable is different in all the instances
+		// i need to display that data in this combo box.
+//		for (String segemnt : ss.getSource().getId())
+			comboBoxSource.addItem(ss.getSource());
+			if (!isAdd) comboBoxSource.setSelectedItem(ss.getSource());
 		comboBoxSource.setBounds(178, 102, 107, 27);
 		add(comboBoxSource);
 		
-		JComboBox comboBoxDestination = new JComboBox();
+		comboBoxDestination = new JComboBox();
+		comboBoxDestination.addItem(ss.getDestination());
+		if (!isAdd) comboBoxDestination.setSelectedItem(ss.getDestination());
 		comboBoxDestination.setBounds(178, 140, 107, 27);
 		add(comboBoxDestination);
 		
@@ -96,9 +108,7 @@ public class SteetSegmentEditPanel extends JPanel {
 			}
 		});
 		btnCancel.setBounds(220, 243, 117, 29);
-		add(btnCancel);
-		
-		
+		add(btnCancel);	
 
 	}
 }

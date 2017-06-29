@@ -29,6 +29,7 @@ public class UserListPanel extends JPanel {
 	JButton btnDelete;
 	JButton btnAdd;
 	private JScrollPane scrollPane;
+	private JButton btnBacl;
 	public UserListPanel(JFrame currentFrame, Courier courier) {
 		setLayout(null);
 		
@@ -95,6 +96,17 @@ public class UserListPanel extends JPanel {
 		btnDelete.setBounds(302, 240, 117, 29);
 		btnDelete.setEnabled(false);
 		add(btnDelete);
+		
+		btnBacl = new JButton("Back\n");
+		btnBacl.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				currentFrame.getContentPane().removeAll();
+				currentFrame.getContentPane().add(new CourierHomePanel(courier));
+				currentFrame.revalidate();
+			}
+		});
+		btnBacl.setBounds(169, 271, 117, 29);
+		add(btnBacl);
 
 	}
 }

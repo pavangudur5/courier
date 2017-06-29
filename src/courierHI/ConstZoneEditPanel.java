@@ -26,7 +26,7 @@ public class ConstZoneEditPanel extends JPanel {
 	private JTextField ToDate;
 	private JTextField ConstructionNo;
 	DateTimeFormatter Dateformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	JComboBox IntNo ;
+	public static JComboBox IntNo ;
 	/**
 	 * Create the panel.
 	 */
@@ -124,6 +124,10 @@ public class ConstZoneEditPanel extends JPanel {
 		btnDelete.setBounds(244, 241, 117, 29);
 		add(btnDelete);
 
+	}
+	public static void call(Courier courier) {
+		courier.addIntersection((Intersection)IntNo.getSelectedItem());
+		
 	}
 
 }

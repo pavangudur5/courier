@@ -83,6 +83,7 @@ public class ConstZoneListPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				courier.removeConstZone((ConstZone)list.getSelectedValue());
 				listModel.removeElement(list.getSelectedValue());
+				ConstZoneEditPanel.call(courier);
 			}
 		});
 		btnDelete.setBounds(297, 250, 117, 29);

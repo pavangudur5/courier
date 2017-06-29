@@ -3,6 +3,7 @@ package courierHI;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import courierDM.CourierDM;
 import courierPD.Courier;
 import courierPD.DeliveryTicket;
 import javax.swing.JButton;
@@ -36,13 +37,6 @@ public class GenerateDriverCopy extends JPanel {
 		JLabel labelticNumber = new JLabel(deliveryticket.getNumber());
 		labelticNumber.setBounds(273, 11, 61, 16);
 		add(labelticNumber);
-		
-//		System.out.println(deliveryticket.getCustomerNamed());
 
 	}
 }
-
-
-// code for running the algorithm
-//DijAlgo.execute(nodes.get(0));
-//LinkedList<Intersection> path = DijAlgo.getPath(nodes.get(10));

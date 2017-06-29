@@ -9,6 +9,7 @@ public class DeliveryTicket {
 	DateTimeFormatter Dateformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	private DateTimeFormatter TF = DateTimeFormatter.ofPattern("HH:mm"); 
 	
+	Courier courier = new Courier();
 	private LocalDateTime date;
 	private LocalTime time;
 	User user = new User();
@@ -234,5 +235,19 @@ public class DeliveryTicket {
 	@Override
 	public String toString() {
 		return  "Order no:"+ getNumber()+ "by" +getOrdertaken() + " " + getBonus();
+	}
+
+	public String calculatebonus(String acttime) {
+					System.out.println(EstDeliveryTime + acttime);
+			if (EstDeliveryTime.equals(acttime))
+			{ 
+				setBonus("0");
+				return "0";
+			}
+			else //complete this
+			{
+				setBonus(courier.getBonusAmount());
+				return courier.getBonusAmount();
+			}
 	}
 }

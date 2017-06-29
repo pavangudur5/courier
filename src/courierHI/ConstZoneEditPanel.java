@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map.Entry;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 
@@ -25,7 +26,7 @@ public class ConstZoneEditPanel extends JPanel {
 	private JTextField ToDate;
 	private JTextField ConstructionNo;
 	DateTimeFormatter Dateformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	
+	JComboBox IntNo ;
 	/**
 	 * Create the panel.
 	 */
@@ -51,7 +52,12 @@ public class ConstZoneEditPanel extends JPanel {
 		lblToDate.setBounds(48, 193, 49, 16);
 		add(lblToDate);
 		
-		JComboBox IntNo = new JComboBox(courier.getIntersectionList().toArray());
+		IntNo = new JComboBox();
+		for (Entry<String, Intersection> intersectionEntry : courier.getIs().entrySet())
+		{
+			IntNo.addItem(intersectionEntry.getValue());
+			if(!isAdd) IntNo.setSelectedItem(constzone.getStreetNo());
+		}
 		IntNo.setBounds(175, 133, 130, 27);
 		add(IntNo);
 		
@@ -96,6 +102,7 @@ public class ConstZoneEditPanel extends JPanel {
 				constzone.setStartDate(sd);
 				constzone.setEndDate(ed);
 				constzone.setStreetNo((Intersection) IntNo.getSelectedItem());
+				courier.removeIntersection((Intersection) IntNo.getSelectedItem());
 				
 				currentFrame.getContentPane().removeAll();
 				currentFrame.getContentPane().add(new ConstZoneListPanel(currentFrame,courier));

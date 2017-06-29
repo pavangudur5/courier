@@ -48,7 +48,7 @@ public class DijAlgo {
 			if(getShortestDistance(target) > getShortestDistance(node) + getDistance(node, target)) {
 				distance.put(target, getShortestDistance(node) + getDistance(node, target));
 				Predecessors.put(target, node);
-//				System.out.println(target);
+//				System.out.println(node);
 				NotVisited.add(target);
 			}
 		}
@@ -88,14 +88,14 @@ public class DijAlgo {
 	{
 		List<Intersection> neighbours = new ArrayList<Intersection>();
 		for (StreetSegment sg : StreetSegments) {
-			if (sg.getSource().equals(node) && !isSettled(sg.getDestination())) {
+			if (sg.getSource().equals(node) && !isVisited(sg.getDestination())) {
 				neighbours.add(sg.getDestination());
 			}
 		}
 		return neighbours;
 	}
 	
-	private boolean isSettled(Intersection intersection)
+	private boolean isVisited(Intersection intersection)
 	{
 		return Visited.contains(intersection);
 	}
@@ -114,9 +114,10 @@ public class DijAlgo {
 	public LinkedList<Intersection> getPath(Intersection target) {
 		LinkedList<Intersection> path = new LinkedList<Intersection>();
 		Intersection step = target;
-		if (Predecessors.get(step) == null){
-			return null;
-		}
+//		checking if path exists
+//		if (Predecessors.get(step) == null){
+//			return null;
+//		}
 		path.add(step);
 		while (Predecessors.get(step) != null)
 		{

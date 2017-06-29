@@ -17,8 +17,6 @@ import courierPD.Graph;
 import courierPD.Intersection;
 import courierPD.StreetSegment;
 import courierPD.User;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 public class CourierDM {
 	
@@ -68,19 +66,20 @@ public class CourierDM {
 			System.out.println("Error reading file:" +fileName1);
 		} 
 	
+		runthealgo(nodes, edges, 1 , 84);
+        }
+	
+	public static void runthealgo(List<Intersection> nodes, List<StreetSegment> edges , int so, int des) {
 		Graph graph = new Graph(nodes, edges);
 		DijAlgo DijAlgo = new DijAlgo(graph);
-		DijAlgo.execute(nodes.get(1));
+		DijAlgo.execute(nodes.get(so));
 		LinkedList<Intersection> path = new LinkedList<Intersection>();
-		path = DijAlgo.getPath(nodes.get(7)); //  this is just an example for now. 
-		
-//        assertTrue(path.size() > 0);
+		path = DijAlgo.getPath(nodes.get(des));
 		
 		for (Intersection inter : path) {
             System.out.println(inter);
-        }
+		}
 	}
-
 		private static void addLane(String id, int source, int destination, int weight, List<Intersection> nodes, List<StreetSegment> edges, Courier mycourier) {
 			StreetSegment lane = new StreetSegment(id, nodes.get(source), nodes.get(destination), weight);
 			edges.add(lane);
@@ -184,5 +183,7 @@ public class CourierDM {
 		}
 		
 	}
+
+	
 }
 

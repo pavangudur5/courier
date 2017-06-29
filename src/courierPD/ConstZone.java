@@ -6,8 +6,7 @@ import java.time.format.DateTimeFormatter;
 public class ConstZone {
 	
 	private String ConstructionNo;
-	private String avenue;
-	private String streetNo;
+	private Intersection streetNo;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	
@@ -15,16 +14,14 @@ public class ConstZone {
 	
 	public ConstZone() {
 		ConstructionNo = " ";
-		avenue = " ";
-		streetNo = " ";
 		startDate = LocalDate.now();
 		endDate = LocalDate.now();
 	}
 
-	public ConstZone(String constructionNo, String avenue, String streetNo) {
+	public ConstZone(Intersection inter, String constructionNo, String avenue, String streetNo, Intersection intersection) {
+		this();
 		this.ConstructionNo = constructionNo;
-		this.avenue = avenue;
-		this.streetNo = streetNo;
+//		inter.setId(this);
 	}
 
 	public String getConstructionNo() {
@@ -35,19 +32,11 @@ public class ConstZone {
 		this.ConstructionNo = constructionNo;
 	}
 
-	public String getAvenue() {
-		return this.avenue;
-	}
-
-	public void setAvenue(String avenue) {
-		this.avenue = avenue;
-	}
-
-	public String getStreetNo() {
+	public Intersection getStreetNo() {
 		return this.streetNo;
 	}
 
-	public void setStreetNo(String streetNo) {
+	public void setStreetNo(Intersection streetNo) {
 		this.streetNo = streetNo;
 	}
 

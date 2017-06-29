@@ -1,6 +1,8 @@
 package courierPD;
 
-public class StreetSegment  {
+import java.util.Iterator;
+
+public class StreetSegment implements Iterable<Intersection> {
 	
 	private String id;
 	private Intersection source;
@@ -59,7 +61,10 @@ public class StreetSegment  {
 		return   getId() + " Source:"+ " " + getSource() + " Destination" + " " +  getDestination();
 	}
 	
-	
-	
+	@Override
+	public Iterator<Intersection> iterator()
+	{
+		return null;
+	}
 	
 }

@@ -155,7 +155,7 @@ public class CourierDM {
 				switch (block[0])
 				{
 				case  "CustomerList":
-					Customer customer = new Customer(block[1], block[2], block[3], block[4], block[5]);
+					Customer customer = new Customer(block[1], block[2],block[3], block[4], block[5]);
 					mycourier.addCustomer(customer);
 					break;
 				case "User":

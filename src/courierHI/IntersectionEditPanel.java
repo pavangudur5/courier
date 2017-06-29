@@ -29,7 +29,7 @@ public class IntersectionEditPanel extends JPanel {
 		lblIntersection.setBounds(56, 94, 81, 16);
 		add(lblIntersection);
 		
-		textField = new JTextField();
+		textField = new JTextField(intersection.getId());
 		textField.setBounds(197, 89, 130, 26);
 		add(textField);
 		textField.setColumns(10);

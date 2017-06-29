@@ -1,13 +1,13 @@
-CustomerList,1001,Bickers & Bickers,1,D,123-456-7890,
-CustomerList,1002,Slaughter & Slaugher,2,B,098-765-4321,
-CustomerList,1003,Payne & Fears,2,F,345-262-2346,
-CustomerList,1004,Dewey Cheatum & Howe,3,C,111-737-9900,
-CustomerList,1005,Low Ball & Lynch,3,E,405-552-1638,
-CustomerList,1006,Argue & Phibbs,5,B,627-273-7722,
-CustomerList,1007,Hunter & Lyon,5,F,222-662-6262,
-CustomerList,1008,Ruff & Ready,7,A,727-757-2322,
-CustomerList,1009,Wright Judge & Jury,7,G,099-991-9119,
-CustomerList,1010,Susan Liddy-Gates,6,D,155-153-1751,
+CustomerList,1001,Bickers & Bickers,000-000-0000,1,D
+CustomerList,1002,Slaughter & Slaugher,111-111-1111,2,B
+CustomerList,1003,Payne & Fears,222-222-2222,2,F
+CustomerList,1004,Dewey Cheatum & Howe,333-333-3333,3,C
+CustomerList,1005,Low Ball & Lynch,444-444-4444,3,E
+CustomerList,1006,Argue & Phibbs,555-555-5555,5,B
+CustomerList,1007,Hunter & Lyon,666-666-6666,5,F
+CustomerList,1008,Ruff & Ready,777-777-7777,7,A
+CustomerList,1009,Wright Judge & Jury,888-888-8888,7,G
+CustomerList,1010,usan Liddy-Gates,999-999-9999,6,D
 User,1,Pavan,1234,405-392-3939,pavan@gmail.com,admin
 User,2,Soumya,1212,492-303-3042,soumya@gmail.com,user
 User,3,David,5050,002-028-9843,david@gmail.com,user

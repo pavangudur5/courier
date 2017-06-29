@@ -8,6 +8,8 @@ import javax.swing.JTextField;
 
 import courierPD.ConstZone;
 import courierPD.Courier;
+import courierPD.Intersection;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -93,6 +95,7 @@ public class ConstZoneEditPanel extends JPanel {
 				
 				constzone.setStartDate(sd);
 				constzone.setEndDate(ed);
+				constzone.setStreetNo((Intersection) IntNo.getSelectedItem());
 				
 				currentFrame.getContentPane().removeAll();
 				currentFrame.getContentPane().add(new ConstZoneListPanel(currentFrame,courier));

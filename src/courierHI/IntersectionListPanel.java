@@ -81,7 +81,8 @@ public class IntersectionListPanel extends JPanel {
 		btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				courier.removeIntersection((Intersection) list.getSelectedValue());
+				listModel.removeElement(list.getSelectedValue());
 			}
 		});
 		btnDelete.setBounds(293, 232, 117, 29);

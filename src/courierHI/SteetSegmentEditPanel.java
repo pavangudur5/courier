@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.Map.Entry;
 import java.awt.event.ActionEvent;
 
 public class SteetSegmentEditPanel extends JPanel {
@@ -48,18 +49,18 @@ public class SteetSegmentEditPanel extends JPanel {
 		add(lblWeight);
 		
 		comboBoxSource = new JComboBox();
-		// i have a variable in other class. where the data 
-		// of that variable is different in all the instances
-		// i need to display that data in this combo box.
-//		for (String segemnt : ss.getSource().getId())
-			comboBoxSource.addItem(ss.getSource());
+		for (Entry<String, Intersection> streetsegmentEntry : courier.getIs().entrySet()){
+			comboBoxSource.addItem(streetsegmentEntry.getValue());
 			if (!isAdd) comboBoxSource.setSelectedItem(ss.getSource());
+		}
 		comboBoxSource.setBounds(178, 102, 107, 27);
 		add(comboBoxSource);
 		
 		comboBoxDestination = new JComboBox();
-		comboBoxDestination.addItem(ss.getDestination());
-		if (!isAdd) comboBoxDestination.setSelectedItem(ss.getDestination());
+		for (Entry<String, Intersection> streetsegmentEntry : courier.getIs().entrySet()){
+			comboBoxDestination.addItem(streetsegmentEntry.getValue());
+			if (!isAdd) comboBoxDestination.setSelectedItem(ss.getDestination());
+		}
 		comboBoxDestination.setBounds(178, 140, 107, 27);
 		add(comboBoxDestination);
 		
@@ -90,6 +91,8 @@ public class SteetSegmentEditPanel extends JPanel {
 				}
 				int weight = Integer.parseInt(textField.getText());
 				ss.setWeight(weight);
+				ss.setDestination((Intersection) comboBoxDestination.getSelectedItem());
+				ss.setSource((Intersection) comboBoxSource.getSelectedItem());
 				
 				currentFrame.getContentPane().removeAll();
 				currentFrame.getContentPane().add(new StreetSegmentListPanel(currentFrame,courier));

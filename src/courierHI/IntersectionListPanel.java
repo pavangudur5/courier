@@ -68,7 +68,7 @@ public class IntersectionListPanel extends JPanel {
 		btnEdit = new JButton("Edit");
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				IntersectionEditPanel intersectioneditpanel = new IntersectionEditPanel(currentFrame, courier, (Intersection)list.getSelectedValue(), true);
+				IntersectionEditPanel intersectioneditpanel = new IntersectionEditPanel(currentFrame, courier, (Intersection)list.getSelectedValue(), false);
 				currentFrame.getContentPane().removeAll();
 				currentFrame.getContentPane().add(intersectioneditpanel);
 				currentFrame.revalidate();

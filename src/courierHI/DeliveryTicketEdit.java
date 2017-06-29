@@ -17,7 +17,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map.Entry;
 import java.util.Random;
-
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -92,17 +91,10 @@ public class DeliveryTicketEdit extends JPanel {
 		}
 		comboBoxName.setBounds(469, 50, 101, 27);
 		add(comboBoxName);
-			
-//		DefaultComboBoxModel ulist = new DefaultComboBoxModel(courier.getUserList().toArray());
-//		comboBoxName = new JComboBox(ulist);
-//		if(!isAdd) comboBoxName.setSelectedItem(deliveryticket.getOrdertaken());
-//		comboBoxName.setBounds(469, 50, 101, 27);
-//		add(comboBoxName);
 		
 		DefaultComboBoxModel calist = new DefaultComboBoxModel(courier.getCustomerList().toArray());
 		comboBoxCusName = new JComboBox(calist);
 		if(!isAdd) comboBoxName.setSelectedItem(deliveryticket.getCustomerNamep());
-//		textFieldCusNumd.setText(deliveryticket.getDeliveryCustomerNumber().getNumber());
 		comboBoxCusName.setBounds(138, 111, 130, 27);
 		add(comboBoxCusName);
 	
@@ -169,9 +161,9 @@ public class DeliveryTicketEdit extends JPanel {
 		add(textFieldBillPickUp);
 		textFieldBillPickUp.setColumns(10);
 		
-		LocalTime ftp = LocalTime.now();
-		String FormattedTime = ftp.format(Timeformatter);
-		textFieldestdeltime = new JTextField(FormattedTime);
+		LocalTime ftp1 = LocalTime.now();
+		String FormattedTime1 = ftp1.format(Timeformatter);
+		textFieldestdeltime = new JTextField(FormattedTime1);
 		textFieldestdeltime.setBounds(138, 300, 130, 26);
 		add(textFieldestdeltime);
 		textFieldestdeltime.setColumns(10);
@@ -242,9 +234,9 @@ public class DeliveryTicketEdit extends JPanel {
 		add(textFieldActPickUp);
 		textFieldActPickUp.setColumns(10);
 		
-		LocalTime ftp1 = LocalTime.now();
-		String FormattedTime1 = ftp.format(Timeformatter);
-		textFieldActDel = new JTextField(FormattedTime1); // default format HH:MM:SS.Mss
+		LocalTime ftp = LocalTime.now();
+		String FormattedTime = ftp.format(Timeformatter);
+		textFieldActDel = new JTextField(FormattedTime); // default format HH:MM:SS.Mss
 		textFieldActDel.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -282,18 +274,19 @@ public class DeliveryTicketEdit extends JPanel {
 				
 				deliveryticket.setBonus(textFieldBonus.getText());
 				LocalTime ef,df;
+				
 				ef = LocalTime.parse(textFieldestdeltime.getText(),Timeformatter);
 				deliveryticket.setEstDeliveryTime(ef);
 				deliveryticket.setOrdertaken((User) comboBoxName.getSelectedItem());
 				deliveryticket.setDriverNumber((Driver) ComboDriverNum.getSelectedItem());
 				deliveryticket.setCustomerNamed((Customer) comboCusNamed.getSelectedItem());
 				
+				deliveryticket.setEstDeliveryTime(ef);
+				
 				currentFrame.getContentPane().removeAll();
 				currentFrame.getContentPane().add(new DeliveryTicketList(currentFrame,courier));
 				currentFrame.getContentPane().revalidate();
 				
-			
-//				deliveryticket.setCustomerNamep((Customer) comboBoxName.getSelectedItem()); 
 			}
 		});
 		btnSave.setBounds(154, 402, 117, 29);

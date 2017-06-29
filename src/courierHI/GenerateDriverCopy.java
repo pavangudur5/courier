@@ -37,6 +37,32 @@ public class GenerateDriverCopy extends JPanel {
 		JLabel labelticNumber = new JLabel(deliveryticket.getNumber());
 		labelticNumber.setBounds(273, 11, 61, 16);
 		add(labelticNumber);
+		
+		JLabel lblFrom = new JLabel("From :");
+		lblFrom.setBounds(22, 47, 61, 16);
+		add(lblFrom);
+		
+		JLabel lblNewLabel = new JLabel();
+		lblNewLabel.setBounds(115, 47, 97, 16);
+		add(lblNewLabel);
+		
+		JLabel lblTo = new JLabel("To: ");
+		lblTo.setBounds(22, 96, 61, 16);
+		add(lblTo);
+		
+		JLabel lblNewLabel_1 = new JLabel();
+		lblNewLabel_1.setBounds(115, 96, 79, 16);
+		add(lblNewLabel_1);
+		
+		JLabel lblEstTime = new JLabel("Est. Time:");
+		lblEstTime.setBounds(22, 157, 95, 16);
+		add(lblEstTime);
+		
+		JLabel label = new JLabel();
+		label.setBounds(115, 157, 61, 16);
+		add(label);
 
+		
+		
 	}
 }
